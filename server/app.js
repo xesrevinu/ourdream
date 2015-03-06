@@ -27,12 +27,11 @@ var mongo = mongoose.connect(config.mongo.host + config.mongo.database, {
 app.use(logger());
 app.use(bodyparser());
 app.use(session({
-	key: "key",
 	store: mongooseStore.create(),
 	cookie: {
 		maxAge: 24 * 60 * 60 * 3000 //3 day
 	}
-}));
+}, app));
 app.use(flash());
 app.use(validate());
 app.use(routing(app));
@@ -43,8 +42,7 @@ app.render = views(config.viewsPath, {
 		html: "swig"
 	}
 });
-
-app.use(require('./Router/app')(app.route, app.render));
+app.use(require('./Router/app')(app.route,app.render))
 
 app.on('error', function(error) {
 	logger.colorConsole().err(error);
