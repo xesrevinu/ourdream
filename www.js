@@ -1,12 +1,13 @@
 //发布,采用config/config-server-{NODE_ENV}.js作为配置
 //process.env.NODE_ENV = 'production';
-process.env.NODE_ENV = 'test';
+//process.env.NODE_ENV = 'test';
 
 const config = require('./config/config');
 const app = require('./server/app');
-
-const info = `server start,listen port:${config.listenPort},NODE_DEV:${config.DEV}`;
-
+const logger = require('tracer');
+const startInfo = `server start,listen port:${config.listenPort},NODE_DEV:${config.DEV}`;
+global.logger = logger;
 app.listen(config.listenPort,function (){
-	console.log(info);
+	// 输入启动信息
+	logger.colorConsole().info(startInfo)
 })
