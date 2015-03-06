@@ -1,0 +1,23 @@
+{
+  "name": "ourdream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaokekeT/ourdream.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xiaokekeT/ourdream/issues"
+  },
+  "homepage": "https://github.com/xiaokekeT/ourdream",
+  "dependencies": {
+    "koa": "^0.18.1",
+    "lodash": "^3.3.1"
+  }
+}
