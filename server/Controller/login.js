@@ -1,5 +1,5 @@
 module.exports = function(route, render) {
 	route.get(function *(){
-		this.body = yield render('index')
+		this.body = yield render('login')
 	})
 }

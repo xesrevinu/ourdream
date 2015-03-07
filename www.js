@@ -6,7 +6,7 @@ const config = require('./config/config');
 const app = require('./server/app');
 const logger = require('tracer');
 const startInfo = `server start,listen port:${config.listenPort},NODE_DEV:${config.DEV}`;
-global.logger = logger;
+
 app.listen(config.listenPort,function (){
 	// 输入启动信息
 	logger.colorConsole().info(startInfo)
