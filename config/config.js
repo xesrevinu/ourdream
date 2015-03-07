@@ -1,3 +1,4 @@
+'use strict'
 var _ = require('lodash'),
 	default_config = require('./config-server-default'),
 	DEV = process.env.NODE_ENV || 'development',
@@ -9,4 +10,4 @@ config.DEV = DEV
 if (DEV !== 'development') {	
 	config = _.merge(default_config, require('./config-server-'+DEV));
 }
-global.config = module.exports = config;;
+module.exports = config;;
