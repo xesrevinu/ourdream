@@ -17,6 +17,7 @@ module.exports = {
 		pass: ""
 	},
 	serverPath :root+"/server",
+	ctrlPath:root+"/server/Controller",
 	appPath:root+"/app",
 	staticPath: root+"/app/static/",
 	viewsPath:  root+"/app/views/",
