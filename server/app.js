@@ -1,3 +1,4 @@
+'use strict'
 var koa = require('koa'),
 	swig = require('swig'),
 	views = require('co-views'),
@@ -8,21 +9,10 @@ var koa = require('koa'),
 	session = require('koa-session'),
 	validate = require('koa-validate'),
 	bodyparser = require('koa-bodyparser'),
-	mongooseStore = require('koa-session-mongoose'),
-	app = koa();
+	mongooseStore = require('koa-session-mongoose');
 
-// redis none 
-/*var redis = redisStore({
-	host: config.redis.host,
-	port: config.redis.port,
-	db: config.redis.db,
-	pass: config.redis.pass
-}).client;*/
-
-var mongo = mongoose.connect(config.mongo.host + config.mongo.database, {
-	user: config.mongo.user,
-	pass: config.mongo.pass
-});
+var app = koa(),
+	config = require('../config/config');
 
 app.use(logger());
 app.use(bodyparser());
@@ -36,14 +26,25 @@ app.use(flash());
 app.use(validate());
 app.use(routing(app));
 app.render = views(config.viewsPath, {
-	default: config.template,
+	default: config.templates,
 	//cache: 'memory',
 	map: {
 		html: "swig"
 	}
 });
-app.use(require('./Router/app')(app.route,app.render))
 
+mongoose.connect(config.mongo.host + config.mongo.database, {
+	user: config.mongo.user,
+	pass: config.mongo.pass
+});
+/*redisStore({
+	host: config.redis.host,
+	port: config.redis.port,
+	db: config.redis.db,
+	pass: config.redis.pass
+}).client;*/
+
+app.use(require('./Router/app')(app.route, app.render));
 app.on('error', function(error) {
 	logger.colorConsole().err(error);
 });
