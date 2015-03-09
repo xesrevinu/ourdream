@@ -33,6 +33,7 @@
     "koa-static-cache": "^3.0.1",
     "koa-validate": "^0.2.9",
     "lodash": "^3.3.1",
+    "lrucache": "^0.2.0",
     "mongoose": "^3.8.21",
     "swig": "^1.4.2"
   },
