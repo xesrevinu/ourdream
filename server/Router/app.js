@@ -21,11 +21,16 @@ module.exports = function(route, render) {
 	function loadCtrl(ctrlPath,injectModules) {
 		var ctrls = fs.readdirSync(ctrlPath);
 		var routers = [];
-
+		var _path ;
 		_.forEach(ctrls, function(name) {
-			var _path = name.replace(/\.\w+$/, '').toLowerCase();
-			_path === 'index' ? _path = '/' : _path = '/' + _path;
-			var filePath = '../Controller/' + _path;
+			name = name.replace(/\.\w+$/, '').toLowerCase();
+			if(name === ""){
+				return 
+			}
+			name === 'index'? _path = '/' : _path = '/' + name;
+			var filePath = '../Controller' + _path;
+			
+			console.log(filePath)
 			try {
 				require(filePath)(route(_path), render, injectModules)
 				routers.push(_path)
