@@ -18,35 +18,30 @@ module.exports = function(route, render) {
 	 * @param  {string} ctrlPath controller路径
 	 * @return {Array}           路由表
 	 */
-	function loadCtrl(ctrlPath,injectModules) {
+	function loadCtrl(ctrlPath, injectModules) {
 		var ctrls = fs.readdirSync(ctrlPath);
-		var routers = [];
-		var _path ;
+		var _path, filePath, routers = [];
 		_.forEach(ctrls, function(name) {
 			name = name.replace(/\.\w+$/, '').toLowerCase();
-			if(name === ""){
-				return 
+			if (name === "") {
+				return
 			}
-			name === 'index'? _path = '/' : _path = '/' + name;
-			var filePath = '../Controller' + _path;
-			
-			console.log(filePath)
+			name === 'index' ? _path = '/' : _path = '/' + name;
+			filePath = '../Controller' + _path;
 			try {
 				require(filePath)(route(_path), render, injectModules)
 				routers.push(_path)
 			} catch (e) {
-				logger.colorConsole().error(filePath + '加载失败,只能加载js哦少年!,'+e)
-
+				logger.colorConsole().error(filePath + '加载失败,只能加载js哦少年!,' + e)
 			}
 		})
-
 		return routers
 	}
 
 	var Data = require('../Data');
 	var ctrlPath = config.ctrlPath;
-	var router = loadCtrl(ctrlPath,{
-		Data:Data
+	var router = loadCtrl(ctrlPath, {
+		Data: Data
 	});
 
 	/*function addParams(url) {
