@@ -1,33 +1,48 @@
 'use strict'
-module.exports = function(router, render,modules) {
+module.exports = function(router, render, modules) {
 	/**
 	 * path -> /user
 	 */
 	var Data = modules.Data;
 	var User = new Data('User');
 
-	User.find({},function (err,data){
-		console.log(err,data)
+	User.find({}, function(err, data) {
+		console.log(err, data)
 	})
-	//console.log(new Data)
+
 	router
 		.get(function*() {
-			this.body = 123123123
+			this.body = 'user'
 		})
-	/**
-	 * path -> /user/123/3123
-	 */
+		.post(function* _() {
+
+		})
+
 	router
 		.nested('/123/3123')
 		.get(function*() {
 			this.body = 123;
 		})
-	/**
-	 * path -> /user/asd/:id/123/:last
-	 */
+
 	router
-		.nested('/asd/:id/123/:last')
+		.nested('/profile/:id')
 		.get(function*() {
-			this.body = JSON.stringify(this.request.params)
+			this.body = this.request.params.id
+		})
+
+	router
+		.nested('/register')
+		.get(function*() {
+			this.body =
+				yield render('register')
+		})
+		.post(function*() {
+			var NewUser = new User(this.request.body)
+			NewUser.save(function(err) {
+				if (!err) {
+					this.body = 'register ok'
+				}
+			});
+
 		})
 }

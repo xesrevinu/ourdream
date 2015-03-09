@@ -1,7 +1,8 @@
 'use strict'
-module.exports = function(route, render,modules) {
-	route
-	.get(function *(){
-		this.body = yield render('login');
-	})
+module.exports = function(router, render,modules) {
+	router
+		.get(function*() {
+			this.body =
+				yield render('login');
+		})
 }
