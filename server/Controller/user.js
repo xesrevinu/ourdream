@@ -4,11 +4,8 @@ module.exports = function(router, render, modules) {
 	 * path -> /user
 	 */
 	var Data = modules.Data;
-	var User = new Data('User');
-
-	User.find({}, function(err, data) {
-		console.log(err, data)
-	})
+	var Model = new Data(['User','Post']);
+	//console.log(Model.Post)
 
 	router
 		.get(function*() {
@@ -37,7 +34,7 @@ module.exports = function(router, render, modules) {
 				yield render('register')
 		})
 		.post(function*() {
-			var NewUser = new User(this.request.body)
+			var NewUser = new Model.User(this.request.body)
 			NewUser.save(function(err) {
 				if (!err) {
 					this.body = 'register ok'
