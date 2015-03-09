@@ -16,6 +16,7 @@ module.exports = {
 		db: "",
 		pass: ""
 	},
+	memoryCapacity:500,
 	serverPath :root+"/server",
 	ctrlPath:root+"/server/Controller",
 	appPath:root+"/app",

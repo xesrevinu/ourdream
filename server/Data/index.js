@@ -2,6 +2,7 @@ var _ = require('lodash'),
 	util = require('util'),
 	LRUCache = require('lrucache'),
 	EventEmitter = require('events').EventEmitter,
+	config = require('../../config/config'),
 	models = require('../Model');
 
 function Cache(capacity) {
@@ -11,7 +12,7 @@ function Cache(capacity) {
 
 function UseCache(cacheType, options) {
 	EventEmitter.call(this)
-	this.cacheType = cacheType || 'memony';
+	this.cacheType = cacheType || 'memory';
 	this.options = options || {};
 }
 util.inherits(UseCache, EventEmitter);
@@ -23,6 +24,7 @@ util.inherits(UseCache, EventEmitter);
 UseCache.prototype.toCache = function(model) {
 	this.getCache(this.cacheType);
 	//this.cache 
+	
 	// TODU
 	return model;
 }
@@ -31,8 +33,8 @@ UseCache.prototype.getCache = function(cacheType) {
 	switch (cacheType) {
 		case 'redis':
 			break;
-		case 'memony':
-			this.cache = new Cache(10);
+		case 'memory':
+			this.cache = new Cache(config.memoryCapacity);
 			break;
 	}
 	return this;
