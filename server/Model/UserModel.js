@@ -8,12 +8,11 @@ var mongoose = require('mongoose'),
  * safe -> 安全插入
  */
 var UserSchema = new Schema({
-	Name:{
+	password:{
 		type:String
 	},
-	ID:{
-		type:Number,
-		max:10
+	id:{
+		type:Number
 	}
 },{
 	collection:'Users',
