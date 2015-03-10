@@ -35,7 +35,9 @@
     "lodash": "^3.3.1",
     "lrucache": "^0.2.0",
     "mongoose": "^3.8.21",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "thunk-redis": "^0.7.1",
+    "thunks": "^2.7.2"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
