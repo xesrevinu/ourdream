@@ -1,15 +1,45 @@
 'use strict'
-module.exports = function(router, render, modules) {
+var Thunk = require('thunks')();
+module.exports = function(router, render, models) {
 	/**
 	 * path -> /user
 	 */
-	var Data = modules.Data;
-	var Model = new Data(['User','Post']);
-	//console.log(Model.Post)
+	var UserData = models.Dao.User;
+
+	/*Model.User.cache.select(1)(function*(error, res) {
+		console.log(error, res);
+
+		yield this.set('foo', 'bar');
+		yield this.set('bar', 'baz');
+
+		console.log('foo -> %s',
+			yield this.get('foo'));
+		console.log('bar -> %s',
+			yield this.get('bar'));
+
+		var user = {
+			id: 'u001',
+			name: 'jay',
+			age: 24
+		};
+		// transaction, it is different from node_redis!
+		yield [
+			this.multi(),
+			this.set(user.id, JSON.stringify(user)),
+			this.zadd('userAge', user.age, user.id),
+			this.pfadd('ageLog', user.age),
+			this.exec()
+		];
+		yield this.set('asd','asdasd')
+		console.log(yield this.get('asd') +'====')
+		return this.quit();
+	})(function(error, res) {
+		console.log(error, res);
+	});*/
 
 	router
 		.get(function*() {
-			this.body = 'user'
+			this.body = 123;
 		})
 		.post(function* _() {
 
@@ -24,7 +54,10 @@ module.exports = function(router, render, modules) {
 	router
 		.nested('/profile/:id')
 		.get(function*() {
-			this.body = this.request.params.id
+			UserData.findUserName(this.request.params.id,function (){
+				console.log(arguments)
+			});
+			this.body = 123
 		})
 
 	router
