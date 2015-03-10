@@ -4,7 +4,6 @@ var koa = require('koa'),
 	views = require('co-views'),
 	flash = require('koa-flash'),
 	logger = require('koa-logger'),
-	mongoose = require('mongoose'),
 	routing = require('koa-routing'),
 	session = require('koa-session'),
 	validate = require('koa-validate'),
@@ -32,18 +31,6 @@ app.render = views(config.viewsPath, {
 		html: "swig"
 	}
 });
-
-mongoose.connect(config.mongo.host + config.mongo.database, {
-	user: config.mongo.user,
-	pass: config.mongo.pass
-});
-/*redisStore({
-	host: config.redis.host,
-	port: config.redis.port,
-	db: config.redis.db,
-	pass: config.redis.pass
-}).client;*/
-
 app.use(require('./Router/app')(app.route, app.render));
 app.on('error', function(error) {
 	logger.colorConsole().err(error);
