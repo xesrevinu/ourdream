@@ -28,20 +28,22 @@ module.exports = function(route, render) {
 			}
 			name === 'index' ? _path = '/' : _path = '/' + name;
 			filePath = '../Controller' + _path;
-			try {
-				require(filePath)(route(_path), render, injectModules)
-				routers.push(_path)
-			} catch (e) {
-				logger.colorConsole().error(filePath + '加载失败,只能加载js哦少年!,' + e)
-			}
+			require(filePath)(route(_path), render, injectModules)
+			routers.push(_path)
+				/*try {
+
+				}catch (e) {
+					logger.colorConsole().error(filePath + '加载失败,只能加载js哦少年!,' + e)
+				}*/
 		})
 		return routers
 	}
 
 	var Data = require('../Data');
+	var Dao = require('../Dao')(Data);
 	var ctrlPath = config.ctrlPath;
 	var router = loadCtrl(ctrlPath, {
-		Data: Data
+		Dao: Dao
 	});
 
 	/*function addParams(url) {
