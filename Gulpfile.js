@@ -24,5 +24,4 @@ gulp.task('watchs',function (){
 	gulp.watch([server,config,www],'jshint')
 	gulp.watch(test,'test')
 })
-
 gulp.task('defalut', runs('test','jshint','watchs'))
