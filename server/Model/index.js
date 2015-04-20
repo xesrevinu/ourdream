@@ -1,4 +1,5 @@
-module.exports = {
-	User:require('./UserModel'),
-	Post:require('./PostModel')
+import mongoose, {
+    Schema
 }
+from 'mongoose'
+

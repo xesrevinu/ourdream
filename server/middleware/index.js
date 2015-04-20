@@ -1,40 +1,29 @@
-var swig = require('swig'),
-    views = require('co-views'),
-    flash = require('koa-flash'),
-    logger = require('koa-logger'),
-    routing = require('koa-routing'),
-    session = require('koa-session'),
-    validate = require('koa-validate'),
-    bodyparser = require('koa-bodyparser'),
-    mongooseStore = require('koa-session-mongoose');
+import koaLogger from 'koa-logger'
+import session from 'koa-session'
+import favicon from 'koa-favicon'
+import views from 'koa-views'
+import trieRouter from 'koa-trie-router'
+import staticCache from 'koa-static-cache'
 
-module.exports = function(app, config) {
-    middleware = require('./middleware')(app);
-    if (config.production) {
-        app.enable('view cache');
-        app.enable('cache');
-        app.enable('minification');
-    };
-    app.use(logger());
-    app.use(bodyparser());
-    app.use(session({
-        store: mongooseStore.create(),
-        cookie: {
-            maxAge: 24 * 60 * 60 * 3000 //3 day
-        },
-        secret: config.secret,
-        resave: true,
-        saveUninitialized: true
-    }, app));
-    app.use(flash());
-    app.use(validate());
-    app.use(routing(app));
-    app.render = views(config.viewsPath, {
-        default: config.templates,
-        cache: config.viewCache,
-        map: {
-            html: "swig"
-        }
-    });
-    return middleware;
+function middleware() {
+    return {
+        user: require('./user'),
+        auth: require('./auth')
+    }
+}
+
+export default (app) => {
+    const middlewares = middleware()
+    const config = app.config
+    app.keys = config.keys
+
+    app.use(koaLogger())
+    app.use(staticCache(config.staticPath, config.staticOpt))
+    // views中间件必须在路由上面
+    app.use(views(config.viewPath, config.view))
+    app.use(trieRouter(app))
+    app.use(session(config.session, app))
+
+    app.use(middlewares.auth.checkLogin)
+    return middlewares
 }
