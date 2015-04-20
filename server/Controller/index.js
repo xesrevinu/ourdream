@@ -1,8 +1,14 @@
-'use strict'
-module.exports = function(router, render, modules) {
-	router
-		.get(function*() {
-			this.body =
-				yield render('index');
-		})
+var indexController = {
+    sendIndex: function*(next) {
+        this.state = {
+            message: 'hello'
+        }
+        yield this.render('index');
+    },
+
+}
+export default {
+    index: indexController,
+    user: require('./user'),
+    profile: require('./profile')
 }

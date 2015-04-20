@@ -1,13 +1,12 @@
 'use strict'
-var _ = require('lodash'),
-	default_config = require('./config-server-default'),
-	DEV = process.env.NODE_ENV || 'development',
-	config = null;
+import _ from 'lodash'
+import default_config from './config-server-default'
+const dev = process.env.NODE_ENV || 'development'
 
-config = default_config;
-config.DEV = DEV
+let config = default_config;
+config.dev = dev
 
-if (DEV !== 'development') {	
-	config = _.merge(default_config, require('./config-server-'+DEV));
+if (dev !== 'development') {
+    config = _.merge(default_config, require('./config-server-' + dev));
 }
-module.exports = config;;
+export default config
