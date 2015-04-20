@@ -1,13 +1,27 @@
-var patt = /x/
+var gulp = require('gulp'),
+	mocha = require('gulp-mocha'),
+	runs = require('gulp-sequence'),
+	jshint = require('gulp-jshint'),
+	stylish = require('jshint-stylish');
 
-// this is a god-awful hack that future babel versions should alleviate
-// igonre 这里只对gulpfile-es6进行babel注册
-patt.test = function(str){
-  return str !== __dirname + '/gulpfile-es6.js'
-}
+var server = './server/**/*.js',
+	config = './config/*.js',
+	www = './www.js';
 
-require('babel/register')({
-  ignore: patt
+var test = './test/*.js';
+gulp.task('test', function() {
+	return gulp.src(test, {
+			read: false
+		})
+		.pipe(mocha())
 })
-
-require('./gulpfile-es6');
+gulp.task('jshint', function() {
+	return gulp.src([server,config,www])
+		.pipe(jshint())
+		.pipe(jshint.reporter(stylish))
+})
+gulp.task('watchs',function (){
+	gulp.watch([server,config,www],'jshint')
+	gulp.watch(test,'test')
+})
+gulp.task('defalut', runs('test','jshint','watchs'))
