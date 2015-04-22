@@ -17,7 +17,7 @@ export default (app) => {
     return app.route(path)
   }
   routeFilePath.forEach(function(file, index) {
-    require('./' + file).apply({}, [gPath, middleware, require('../controller/' + file)])
+    require('./' + file).call({}, gPath, middlewares, require('../controller/' + file))
   })
 
   return function*(next) {
