@@ -9,7 +9,6 @@ export default {
     yield this.render('register')
   },
   registerSuccess: function*(next) {
-    console.log(this)
-    this.body = 'ok'
+    this.body = JSON.stringify(this.request)
   },
 }
