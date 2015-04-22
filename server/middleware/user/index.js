@@ -15,6 +15,7 @@ export default {
     }
   },
   register: function*(next) {
+    console.log(1)
     yield next
   }
 }
