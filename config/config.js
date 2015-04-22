@@ -7,6 +7,6 @@ let config = default_config;
 config.dev = dev
 
 if (dev !== 'development') {
-    config = _.merge(default_config, require('./config-server-' + dev));
+  config = _.merge(default_config, require('./config-server-' + dev));
 }
 export default config

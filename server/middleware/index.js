@@ -3,27 +3,32 @@ import session from 'koa-session'
 import favicon from 'koa-favicon'
 import views from 'koa-views'
 import trieRouter from 'koa-trie-router'
+import flash from 'koa-flash'
 import staticCache from 'koa-static-cache'
+import body from 'koa-bodyparser'
 
 function middleware() {
-    return {
-        user: require('./user'),
-        auth: require('./auth')
-    }
+  return {
+    user: require('./user'),
+    auth: require('./auth')
+  }
 }
 
 export default (app) => {
-    const middlewares = middleware()
-    const config = app.config
-    app.keys = config.keys
+  const middlewares = middleware()
+  const config = app.config
+  app.keys = config.keys
 
-    app.use(koaLogger())
-    app.use(staticCache(config.staticPath, config.staticOpt))
+  app.use(koaLogger())
+  app.use(favicon(config.faviconPath));
+  app.use(staticCache(config.staticPath, config.staticOpt))
+  app.use(body())
     // views中间件必须在路由上面
-    app.use(views(config.viewPath, config.view))
-    app.use(trieRouter(app))
-    app.use(session(config.session, app))
+  app.use(session(config.session, app))
+  app.use(flash())
+  app.use(views(config.viewPath, config.view))
+  app.use(trieRouter(app))
+  app.use(middlewares.auth.checkLogin)
 
-    app.use(middlewares.auth.checkLogin)
-    return middlewares
+  return middlewares
 }

@@ -16,11 +16,11 @@ export default {
         db: "",
         pass: ""
     },
-    memoryCapacity:500,
-    serverPath :root+"/server",
-    ctrlPath:root+"/server/Controller",
-    appPath:root+"/app",
-    staticPath: root+"/app/static/",
-    viewsPath:  root+"/app/views/",
-    templates: "html",//swig
+    memoryCapacity: 500,
+    serverPath: root + "/server",
+    ctrlPath: root + "/server/Controller",
+    appPath: root + "/app",
+    staticPath: root + "/app/static/",
+    viewsPath: root + "/app/views/",
+    templates: "html", //swig
 }

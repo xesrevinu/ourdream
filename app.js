@@ -4,7 +4,7 @@ process.env.NODE_ENV = 'development';
 //process.env.NODE_ENV = 'production';
 //process.env.NODE_ENV = 'test';
 
-import Server from './server/www'
+import Server from './server/server'
 import tracer from 'tracer'
 import config from './config/config'
 
@@ -14,14 +14,14 @@ const server = new Server();
 global.logger = logger
 
 server.start(function(e) {
-    let {
-        action, status, port
-    } = e;
-    const serverInfo = `
+  let {
+    action, status, port
+  } = e;
+  const serverInfo = `
                server ${action}
                ================
                server status: ${status}
                server listen port:${port}
                `
-    logger.info(serverInfo)
+  logger.info(serverInfo)
 })

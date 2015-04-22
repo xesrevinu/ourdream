@@ -3,6 +3,7 @@ import clc from 'cli-color'
 const root = process.cwd();
 export default {
 	root: root,
+	debug: true,
 	listenPort: 3000,
 	keys: ['koa secret'],
 	mongo: {
@@ -42,6 +43,7 @@ export default {
 	publicPath: root + "/public/",
 	staticPath: root + "/public/",
 	viewPath: root + "/public/views/",
+	faviconPath: root + "/public/favicon.ico",
 	cliColor: {
 		filters: {
 			log: clc.black.bgWhite,
