@@ -19,10 +19,10 @@ export default (app) => {
   const config = app.config
   app.keys = config.keys
 
-  app.use(koaLogger())
-  app.use(favicon(config.faviconPath));
-  app.use(staticCache(config.staticPath, config.staticOpt))
   app.use(body())
+  app.use(favicon(config.faviconPath));
+  app.use(koaLogger())
+  app.use(staticCache(config.staticPath, config.staticOpt))
     // views中间件必须在路由上面
   app.use(session(config.session, app))
   app.use(flash())
