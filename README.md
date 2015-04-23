@@ -16,26 +16,26 @@
 
 开发：
 
-* ```
+```js
 npm run build-watch
 ```
 
-* ```
+```js
 pm2 start server/dist/app.js --watch
 ```
 
 部署：
 
-* ```
+```js
 npm run build
 ```
 
-* ```
+```js
 pm2 start server/dist/app.js -i 0
 ```
 
 or
 
-* ```
+```js
 npm start
 ```
