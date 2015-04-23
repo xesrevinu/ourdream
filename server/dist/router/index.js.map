@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/router/index.js"],"names":[],"mappings":";;;;;;qBAAe,UAAC,KAAK,EAAE,UAAU,EAAE,UAAU,EAAK;AAChD,OAAK,CAAC,GAAG,CAAC,CACP,GAAG,CAAC,UAAU,CAAC,SAAS,CAAC,CAAA;CAC7B","file":"server/src/router/index.js","sourcesContent":["export default (route, middleware, controller) => {\n  route('/')\n    .get(controller.sendIndex)\n}"]}

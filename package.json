@@ -2,9 +2,10 @@
   "name": "ourdream",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node_modules/.bin/babel  sercer/src --out-dir server/dist ",
+    "build-watch": "node_modules/.bin/babel server/src --out-dir server/dist --watch"
   },
   "repository": {
     "type": "git",

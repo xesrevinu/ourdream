@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/data.js"],"names":[],"mappings":";;;;;qBAAe;AACb,MAAI,EAAE,OAAO,CAAC,mBAAmB,CAAC;CACnC","file":"server/src/data.js","sourcesContent":["export default {\n  User: require('./model/userModel')\n}"]}

@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <title>{{title}}</title>
     <script src="js/a.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+      var socket = io('http://localhost:3000');
+      socket.on('connect', function(){
+        console.log(1)
+      });
+      socket.on('hello', function(data){
+        var hello = document.getElementById('hello');
+        var _txt = hello.innerHTML;
+        hello.innerHTML=_txt+=data.name+'!'
+      });
+      socket.on('disconnect', function(){
+
+      });
+    </script>
 </head>
 <body>
-    {{message}} !
+  <p id="hello">
+    {{message }}
+  </p>
 </body>
 </html>
