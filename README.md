@@ -9,12 +9,33 @@
 
 
 ###运行：
-```node app-es6.js```
+
+****
+
+####先编译
+
+开发：
+
+* ```js
+npm run build-watch
+```
+
+* ```js
+pm2 start server/dist/app.js --watch
+``` 
+
+部署：
+
+* ```js
+npm run build
+```
+
+* ```js
+pm2 start server/dist/app.js -i 0 
+``` 
 
 or
 
-```pm2 start app-es6.js --watch``` 
-
-or
-
-```pm2 start app-es6.js -i 0``` 
+* ```js
+npm start
+``` 
