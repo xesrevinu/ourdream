@@ -1,0 +1,38 @@
+{% include './header.html' %}
+<div class="container">
+    <div class="well auth-box">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>登录</legend>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">邮箱</label>
+                    <div class="col-lg-5">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">密码</label>
+                    <div class="col-lg-5">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> 记住登录
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-5 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary">登录</button>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="col col-lg-5 login-left">
+              <div class="well login-cover">
+
+              </div>
+            </div>
+        </form>
+      </div>
+  </div>
+{% include './footer.html' %}

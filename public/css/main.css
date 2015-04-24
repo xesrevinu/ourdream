@@ -1,0 +1,50 @@
+.box{
+  background: white;
+}
+
+.container-box {
+    /* padding: 4px; */
+    /* border: 1px solid; */
+}
+.login-left {
+  position: relative;
+  top: -251px;
+  left: 59%;
+}
+.auth-box{
+  margin-top:30px;
+}
+.login-cover{
+  height:250px;
+  background-image: url('../image/login.jpeg');
+  /*background-image: url('https://unsplash.it/g/458/354/?gravity=east&&random');*/
+  background-size:cover;
+}
+.cover-pull{
+  /*background-image: url('https://unsplash.it/1200/400');*/
+  background-image: url('../image/cover.jpeg');
+  background-size:cover;
+  color:white;
+  height: 400px;
+}
+.btn-link-white{
+  color:white;
+}
+.btn-link-white:hover{
+  color: #E7E5E5;
+}
+.footer {
+  margin-top: 20px;
+  background: rgb(255, 255, 255);
+  color:#040204FF;
+}
+.footer-copyright {
+  font-weight: 300;
+  overflow: hidden;
+  height: 50px;
+  line-height: 50px;
+}
+
+.white {
+    color: white;
+}

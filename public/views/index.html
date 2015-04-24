@@ -1,28 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-    <script src="js/a.js"></script>
-    <script src="socket.io/socket.io.js"></script>
-    <script>
-      var socket = io('http://localhost:3000');
-      socket.on('connect', function(){
-        console.log(1)
-      });
-      socket.on('hello', function(data){
-        var hello = document.getElementById('hello');
-        var _txt = hello.innerHTML;
-        hello.innerHTML=_txt+=data.name+'!'
-      });
-      socket.on('disconnect', function(){
+{% include './header.html' %}
+<div class="container">
+  <div class="jumbotron cover-pull">
+      <h1>Ourdream</h1>
+      <p class="h2">
+        Open
+      </p>
+      <p><a class="btn btn-link btn-link-white">Learn more</a></p>
+  </div>
+  <div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            Panel content
+        </div>
+    </div>
+    <div class="col-lg-8 container-box ">
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+    </div>
+    <div class="col-lg-4 ">
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>
 
-      });
-    </script>
-</head>
-<body>
-  <p id="hello">
-    {{message }}
+    <div class="col-lg-6">
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="well">
+        <p class="">asd</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="bs-component">
+      <a href="javascript:void(0)" class="btn btn-default">Default</a>
+      <a href="javascript:void(0)" class="btn btn-primary">Primary</a>
+      <a href="javascript:void(0)" class="btn btn-success">Success</a>
+      <a href="javascript:void(0)" class="btn btn-info">Info</a>
+      <a href="javascript:void(0)" class="btn btn-warning">Warning</a>
+      <a href="javascript:void(0)" class="btn btn-danger">Danger</a>
+      <a href="javascript:void(0)" class="btn btn-link">Link</a>
   </p>
-</body>
-</html>
+</div>
+
+{% include './footer.html' %}
