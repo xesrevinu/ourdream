@@ -1,0 +1,24 @@
+{
+  "name": "public",
+  "version": "0.0.1",
+  "homepage": "https://github.com/xiaokekeT/ourdream",
+  "authors": [
+    "kee <121441909@qq.com>"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "~0.96.1",
+    "bootstrap": "~3.3.4",
+    "bootstrap-material-design": "~0.3.0"
+  }
+}

@@ -7,6 +7,9 @@
 * node
 * pm2
 
+```js
+cd ${project}/public/ && bower install
+```
 
 ###运行：
 
