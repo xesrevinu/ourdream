@@ -18,24 +18,37 @@ var _Model2 = require('./');
 
 var _Model3 = _interopRequireWildcard(_Model2);
 
-var checkForm = {
-  name: String
-};
-
 var User = (function (_Model) {
   function User(newUser) {
     _classCallCheck(this, User);
 
     _get(Object.getPrototypeOf(User.prototype), 'constructor', this).call(this);
-    this.collection = this.getCollection('users');
   }
 
   _inherits(User, _Model);
 
   _createClass(User, null, [{
-    key: 'valid',
-    value: function valid(newUser) {
-      return this.validModel(newUser, checkForm);
+    key: 'findUser',
+    value: function findUser(uid) {
+      var user = this.getCollection('users');
+      return regeneratorRuntime.mark(function callee$2$0() {
+        return regeneratorRuntime.wrap(function callee$2$0$(context$3$0) {
+          while (1) switch (context$3$0.prev = context$3$0.next) {
+            case 0:
+              context$3$0.next = 2;
+              return user.find({
+                uid: uid
+              });
+
+            case 2:
+              return context$3$0.abrupt('return', context$3$0.sent);
+
+            case 3:
+            case 'end':
+              return context$3$0.stop();
+          }
+        }, callee$2$0, this);
+      });
     }
   }]);
 

@@ -1,11 +1,23 @@
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-exports["default"] = function (socket) {};
+var _user = require('./user');
 
-module.exports = exports["default"];
+var _user2 = _interopRequireWildcard(_user);
 
-//console.log(socket)
+var _message = require('./message');
+
+var _message2 = _interopRequireWildcard(_message);
+
+exports['default'] = function (socket) {
+  socket.on('disconnect', function () {});
+  _user2['default'](socket);
+  _message2['default'](socket);
+};
+
+module.exports = exports['default'];

@@ -33,11 +33,19 @@ var socket = (function (_io) {
 
   _createClass(socket, [{
     key: 'connection',
-    value: function connection(fn) {
-      this.on('connection', function (sk) {
-        fn(sk);
-        _onSocket2['default'](sk);
-      });
+    value: function connection(done) {
+      //this.set('authorization', this.auth)
+      this.on('connection', this.onConnection);
+    }
+  }, {
+    key: 'onConnection',
+    value: function onConnection(sk) {
+      _onSocket2['default'](sk);
+    }
+  }, {
+    key: 'auth',
+    value: function auth() {
+      console.log(2);
     }
   }, {
     key: 'listen',

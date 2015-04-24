@@ -8,31 +8,33 @@ var _User = require('../../data');
 
 exports['default'] = {
   checkUserModel: regeneratorRuntime.mark(function checkUserModel(next) {
-    var body, checkd;
+    var userModel, checkd;
     return regeneratorRuntime.wrap(function checkUserModel$(context$1$0) {
       while (1) switch (context$1$0.prev = context$1$0.next) {
         case 0:
-          body = {
-            name: 10
-          };
-          checkd = _User.User.valid(body);
+          userModel = this.request.body;
+          checkd = false;
+
+          if (userModel) {
+            checkd = !checkd;
+          }
 
           if (!checkd) {
-            context$1$0.next = 7;
+            context$1$0.next = 8;
             break;
           }
 
-          context$1$0.next = 5;
+          context$1$0.next = 6;
           return next;
 
-        case 5:
-          context$1$0.next = 8;
+        case 6:
+          context$1$0.next = 9;
           break;
 
-        case 7:
+        case 8:
           this.body = 'error';
 
-        case 8:
+        case 9:
         case 'end':
           return context$1$0.stop();
       }

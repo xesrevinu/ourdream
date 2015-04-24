@@ -60,10 +60,11 @@ var Server = (function (_koa) {
   _createClass(Server, [{
     key: 'start',
     value: function start(callback) {
+
       this.router();
       this.server = _http2['default'].createServer(this.app.callback());
       this.socket();
-      return this.server.listen(_config2['default'].listenPort, callback(this.serverEvent));
+      this.server.listen(_config2['default'].listenPort, callback(this.serverEvent));
     }
   }, {
     key: 'router',
@@ -72,14 +73,8 @@ var Server = (function (_koa) {
     }
   }, {
     key: 'socket',
-    value: function socket() {
-      var _this = this;
-
-      var self = this;
-      var io = new _ioSocket2['default'](this.server);
-      io.connection(function (socket) {
-        _this.app.socket = socket;
-      });
+    value: function socket(done) {
+      new _ioSocket2['default'](this.server).connection();
     }
   }], [{
     key: 'stopServer',

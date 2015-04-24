@@ -18,6 +18,10 @@ var _wrap = require('co-monk');
 
 var _wrap2 = _interopRequireWildcard(_wrap);
 
+var _redisClient = require('../redis');
+
+var _redisClient2 = _interopRequireWildcard(_redisClient);
+
 var db = _monk2['default']('localhost/ourdream');
 
 var Model = (function () {
@@ -25,16 +29,22 @@ var Model = (function () {
     _classCallCheck(this, Model);
 
     this.db = db;
-    this.getCollection = function (cname) {
-      return warp(this.db.get(cname));
-    };
   }
 
   _createClass(Model, null, [{
-    key: 'validModel',
-    value: function validModel(newObjct, checkFrom) {
-      for (var i in newObjct) {}
-      return true;
+    key: 'getCollection',
+    value: function getCollection(cname) {
+      return _wrap2['default'](db.get(cname));
+    }
+  }, {
+    key: 'get',
+    value: function get(id, callback) {
+      _redisClient2['default'].hget(id, callback);
+    }
+  }, {
+    key: 'set',
+    value: function set(id, callback) {
+      _redisClient2['default'].hset(id, callback);
     }
   }]);
 

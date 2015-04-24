@@ -43,5 +43,22 @@ exports['default'] = {
           return context$1$0.stop();
       }
     }, registerSuccess, this);
-  }) };
+  }),
+  loginSuccess: regeneratorRuntime.mark(function loginSuccess(next) {
+    return regeneratorRuntime.wrap(function loginSuccess$(context$1$0) {
+      while (1) switch (context$1$0.prev = context$1$0.next) {
+        case 0:
+          this.state = {
+            title: '登录'
+          };
+          context$1$0.next = 3;
+          return this.render('login');
+
+        case 3:
+        case 'end':
+          return context$1$0.stop();
+      }
+    }, loginSuccess, this);
+  })
+};
 module.exports = exports['default'];
