@@ -11,4 +11,10 @@ export default {
   registerSuccess: function*(next) {
     this.body = JSON.stringify(this.request)
   },
+  loginSuccess: function*(next) {
+    this.state = {
+      title: '登录'
+    }
+    yield this.render('login')
+  }
 }

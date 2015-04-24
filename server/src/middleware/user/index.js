@@ -4,10 +4,11 @@ import {
 from '../../data'
 export default {
   checkUserModel: function*(next) {
-    var body = {
-      name: 10
+    const userModel = this.request.body
+    let checkd = false;
+    if (userModel) {
+      checkd = !checkd
     }
-    var checkd = User.valid(body)
     if (checkd) {
       yield next
     } else {

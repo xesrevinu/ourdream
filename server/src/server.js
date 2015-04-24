@@ -22,20 +22,18 @@ class Server extends koa {
     }
   }
   start(callback) {
+
     this.router()
     this.server = http.createServer(this.app.callback())
     this.socket()
-    return this.server.listen(config.listenPort, callback(this.serverEvent))
+    this.server.listen(config.listenPort, callback(this.serverEvent))
+
   }
   router() {
     route(this.app)
   }
-  socket() {
-    var self = this
-    var io = new ioSocket(this.server);
-    io.connection((socket) => {
-      this.app.socket = socket
-    })
+  socket(done) {
+    new ioSocket(this.server).connection()
   }
   static stopServer() {
     process.on('exit', (e) => {

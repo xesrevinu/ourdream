@@ -1,14 +1,17 @@
 import Model from './'
-const checkForm = {
-  name: String
-}
+
 class User extends Model {
   constructor(newUser) {
     super()
-    this.collection = this.getCollection('users')
   }
-  static valid(newUser) {
-    return this.validModel(newUser, checkForm)
+  static findUser(uid) {
+    var user = this.getCollection('users')
+    return function*() {
+      return yield user.find({
+        uid: uid
+      })
+    }
+
   }
 }
 

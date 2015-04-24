@@ -4,11 +4,15 @@ class socket extends io {
   constructor(server) {
     super(server)
   }
-  connection(fn) {
-    this.on('connection', (sk) => {
-      fn(sk)
-      onSocket(sk)
-    })
+  connection(done) {
+    //this.set('authorization', this.auth)
+    this.on('connection', this.onConnection)
+  }
+  onConnection(sk) {
+    onSocket(sk)
+  }
+  auth() {
+    console.log(2)
   }
   listen(port) {
     //super.listen(port)
