@@ -1,10 +1,27 @@
-.box{
-  background: white;
+html,body{
+  color: #444;
+  background: #ebebeb
 }
-
+.main-navigation{
+  padding: 18px 0 1px 0;
+  background: #FFFFFF;
+  margin-bottom: 20px;
+}
+.main-navigation .navbar-default{
+  background: none;
+  border: 0;
+}
+.navbar-header{
+  margin-left: 8%;
+  letter-spacing: 1.3px;
+  font-family: 'Open Sans', sans-serif;
+  text-shadow: 0 1px 1px rgb(184, 180, 180);
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background: #EFEFEF;
+}
 .container-box {
-    /* padding: 4px; */
-    /* border: 1px solid; */
+    margin-top: 35px;
 }
 .login-left {
   position: relative;
@@ -20,12 +37,22 @@
   /*background-image: url('https://unsplash.it/g/458/354/?gravity=east&&random');*/
   background-size:cover;
 }
+.login-cover >p{
+  padding:51% 0 0 34%;
+  color:white;
+  letter-spacing: 1.2px;
+}
+.jumbotron-min{
+  height: 200px;
+}
+.jumbotron-max{
+  height: 400px;
+}
 .cover-pull{
   /*background-image: url('https://unsplash.it/1200/400');*/
   background-image: url('../image/cover.jpeg');
   background-size:cover;
   color:white;
-  height: 400px;
 }
 .btn-link-white{
   color:white;
@@ -43,8 +70,4 @@
   overflow: hidden;
   height: 50px;
   line-height: 50px;
-}
-
-.white {
-    color: white;
 }

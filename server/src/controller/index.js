@@ -1,6 +1,6 @@
 import sockets from '../socket/index'
 export default {
-  sendIndex: function*(next) {
+  send: function*(next) {
     this.state = {
       message: 'hello'
     }

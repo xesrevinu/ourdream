@@ -9,7 +9,7 @@ export default {
     yield this.render('register')
   },
   registerSuccess: function*(next) {
-    this.body = JSON.stringify(this.request)
+    this.body = 'registerSuccess'
   },
   loginSuccess: function*(next) {
     this.state = {
