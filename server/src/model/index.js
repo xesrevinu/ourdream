@@ -5,16 +5,23 @@ const db = monk('localhost/ourdream');
 
 class Model {
   constructor() {
-    this.db = db
+      this.db = db
+      this.model = {}
+    }
+    /**
+     * 获得collection
+     * @param  {String}
+     * @return {Collection}
+     */
+  static use(collection) {
+    this.collection = wrap(db.get(collection))
+    return this.collection
   }
-  static getCollection(cname) {
-    return wrap(db.get(cname))
-  }
-  static get(id, callback) {
-    redisClient.hget(id, callback)
-  }
-  static set(id, callback) {
-    redisClient.hset(id, callback)
+  save() {
+    const self = this
+    return function*() {
+      return yield self.collection.insert(self.model)
+    }
   }
 }
 
