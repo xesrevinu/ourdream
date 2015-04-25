@@ -1,4 +1,4 @@
 export default (route, middleware, controller) => {
-  route('/')
+  route('/find')
     .get(controller.send)
 }
