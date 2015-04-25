@@ -1,6 +1,6 @@
 export default (route, middleware, controller) => {
   route('/user')
-    .get(controller.sendUser)
+    .get(controller.send)
 
   route('/user/login')
     .get(controller.loginSuccess)
