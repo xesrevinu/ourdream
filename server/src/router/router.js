@@ -2,19 +2,25 @@ import middleware from '../middleware'
 
 export default (app) => {
   const middlewares = middleware(app)
-  const routeFilePath = [
-    'index',
-    'user',
-    'profile'
-  ]
+  const routeFilePath = {
+    'index': './index',
+    'user': './user',
+    'profile': './profile',
+    'find': './find'
+  }
 
   function gPath(path) {
     return app.route(path)
   }
-  routeFilePath.forEach(function(file, index) {
-    require('./' + file).call({}, gPath, middlewares, require('../controller/' + file))
-  })
-
+  for (let i in routeFilePath) {
+    let ctrl
+    try {
+      ctrl = require('../controller/' + i)
+    } catch (e) {
+      ctrl = {}
+    }
+    require(routeFilePath[i]).call({}, gPath, middlewares, ctrl)
+  }
   return function*(next) {
     if (app.env === 'development') {
       this.status = 501
