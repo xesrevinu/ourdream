@@ -6,12 +6,16 @@ export default (app) => {
     'index': './index',
     'user': './user',
     'profile': './profile',
-    'find': './find'
+    'find': './find',
+    'api': './api'
   }
 
   function gPath(path) {
-    return app.route(path)
-  }
+      return app.route(path)
+    }
+    /**
+     * 注入中间件和controller
+     */
   for (let i in routeFilePath) {
     let ctrl
     try {
@@ -19,13 +23,17 @@ export default (app) => {
     } catch (e) {
       ctrl = {}
     }
-    require(routeFilePath[i]).call({}, gPath, middlewares, ctrl)
+    require(routeFilePath[i])(gPath, middlewares, ctrl)
   }
-  return function*(next) {
+  // 404 Error handle
+
+  app.use(function*(next) {
     if (app.env === 'development') {
-      this.status = 501
+      this.status = 500
       this.body = '未定义的路由'
     }
-    yield next
-  }
+    this.type = 'text/html'
+    this.status = 404
+    yield this.render('404')
+  })
 }

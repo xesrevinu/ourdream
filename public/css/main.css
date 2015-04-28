@@ -3,25 +3,39 @@ html,body{
   background: #ebebeb
 }
 .main-navigation{
-  padding: 18px 0 1px 0;
+  /* padding: 0 0 1px 0; */
   background: #FFFFFF;
   margin-bottom: 20px;
 }
 .main-navigation .navbar-default{
   background: none;
   border: 0;
+  padding-top: 15px;
+  padding-bottom: 11px;
 }
 .navbar-header{
-  margin-left: 8%;
+  margin-left: 10%;
+  margin-right: 15px;
   letter-spacing: 1.3px;
   font-family: 'Open Sans', sans-serif;
-  text-shadow: 0 1px 1px rgb(184, 180, 180);
+}
+.navbar-header a.navbar-brand{
+  color: #342E2E;
+  font-size: 20px;
+  border-bottom: 1px solid #ccc;
+}
+.navbar-right{
+  /*margin:0;*/
+}
+.navbar-default .navbar-nav > li > a{
+  font-size: 14px;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    background: #EFEFEF;
+  color: black;
+  background: none;
 }
 .container-box {
-    margin-top: 35px;
+  margin-top: 35px;
 }
 .login-left {
   position: relative;

@@ -1,21 +1,25 @@
 import Model from './'
 import _ from 'lodash'
 import utils from '../utils'
-const collection = Model.use('Users');
+
+const user = Model.use('Users')
+
 class User extends Model {
   constructor(newUser) {
     super()
+    this.collection = user
     this.model = {
-      uid: newUser.uuid,
       email: newUser.email,
       password: newUser.password
     }
-    this.collection = collection
     return this
   }
-  static findUser(uid) {
+  static findUserInfo(uid) {
     const self = this
     return function*() {
+      /*if (data) {
+        return sendData(data)
+      }*/
       return yield self.collection.findOne({
         uid: uid
       })
@@ -23,20 +27,13 @@ class User extends Model {
   }
   static emailExist(email) {
     const self = this
-    var ok = true
+    var ok = false
     return function*() {
-      for (let i = 0; i < 1000; i++) {
-        yield self.collection.insert({
-          uid: utils.createUid(),
-          email: parseInt(Math.random() * 100000000) + '@qq.com',
-          password: '123'
-        })
-      }
       const exist =
-        yield self.collection.findOne({
+        yield self.collection.count({
           email: email
         })
-      if (_.isEmpty(exist)) {
+      if (exist) {
         ok = !ok
       }
       return yield [ok]

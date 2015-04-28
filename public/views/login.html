@@ -1,4 +1,6 @@
-{% include './header.html' %}
+{% extends 'layout.html' %}
+
+{% block content %}
 <div class="container container-box">
     <div class="well">
         <form class="form-horizontal" action="/user/login" method="POST">
@@ -38,4 +40,5 @@
         </form>
       </div>
   </div>
-{% include './footer.html' %}
+
+{% endblock %}
