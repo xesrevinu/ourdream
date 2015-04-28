@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {{title}} -Ourdream. {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="{{webset.keywords}}" />
+    <meta name="description" content="{{webset.description}}">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="/bower_components/bootstrap-material-design/dist/css/material.min.css"> -->
+    {% block style %}
+    {% endblock %}
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="main-navigation">
+  <div class="navbar  navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-warning-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Ourdream</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-warning-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">首页</a></li>
+            <li><a href="/find">发现</a></li>
+        </ul>
+        <!-- <form class="navbar-form navbar-left">
+            <input type="text" class="form-control col-lg-8" placeholder="Search">
+        </form> -->
+        <ul class="nav navbar-nav navbar-right">
+            {% if user %}
+            <li class="dropdown">
+                <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.name || user.uid}} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:void(0)">个人中心</a></li>
+                    <li><a href="javascript:void(0)">设置中心</a></li>
+                    <li><a href="javascript:void(0)">帮助</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/user/logout">退出</a></li>
+                </ul>
+            </li>
+            {% else %}
+            <li><a href="/user/login">登录</a></li>
+            <li><a href="/user/register">注册</a></li>
+            {% endif %}
+
+        </ul>
+    </div>
+  </div>
+</div>
+{% block content %}
+    <p>找不到相应内容</p>
+{% endblock %}
+
+{% include './footer.html' %}

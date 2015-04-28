@@ -1,0 +1,87 @@
+html,body{
+  color: #444;
+  background: #ebebeb
+}
+.main-navigation{
+  /* padding: 0 0 1px 0; */
+  background: #FFFFFF;
+  margin-bottom: 20px;
+}
+.main-navigation .navbar-default{
+  background: none;
+  border: 0;
+  padding-top: 15px;
+  padding-bottom: 11px;
+}
+.navbar-header{
+  margin-left: 10%;
+  margin-right: 15px;
+  letter-spacing: 1.3px;
+  font-family: 'Open Sans', sans-serif;
+}
+.navbar-header a.navbar-brand{
+  color: #342E2E;
+  font-size: 20px;
+  border-bottom: 1px solid #ccc;
+}
+.navbar-right{
+  /*margin:0;*/
+}
+.navbar-default .navbar-nav > li > a{
+  font-size: 14px;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: black;
+  background: none;
+}
+.container-box {
+  margin-top: 35px;
+}
+.login-left {
+  position: relative;
+  top: -251px;
+  left: 59%;
+}
+.auth-box{
+  margin-top:30px;
+}
+.login-cover{
+  height:250px;
+  background-image: url('../image/login.jpeg');
+  /*background-image: url('https://unsplash.it/g/458/354/?gravity=east&&random');*/
+  background-size:cover;
+}
+.login-cover >p{
+  padding:51% 0 0 34%;
+  color:white;
+  letter-spacing: 1.2px;
+}
+.jumbotron-min{
+  height: 200px;
+}
+.jumbotron-max{
+  height: 400px;
+}
+.cover-pull{
+  /*background-image: url('https://unsplash.it/1200/400');*/
+  background-image: url('../image/cover.jpeg');
+  background-size:cover;
+  color:white;
+}
+.btn-link-white{
+  color:white;
+}
+.btn-link-white:hover{
+  color: #E7E5E5;
+}
+.footer {
+  margin-top: 20px;
+  background: rgb(255, 255, 255);
+  color:#040204FF;
+}
+.footer-copyright {
+  font-weight: 300;
+  overflow: hidden;
+  height: 50px;
+  line-height: 50px;
+}

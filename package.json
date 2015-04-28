@@ -2,9 +2,10 @@
   "name": "ourdream",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node_modules/.bin/babel  sercer/src --out-dir server/dist ",
+    "build-watch": "node_modules/.bin/babel server/src --out-dir server/dist --watch"
   },
   "repository": {
     "type": "git",
@@ -20,34 +21,33 @@
   },
   "homepage": "https://github.com/xiaokekeT/ourdream",
   "dependencies": {
-    "bson": "^0.2.19",
+    "cli-color": "^0.3.3",
     "co-monk": "^1.0.0",
-    "co-views": "^0.3.0",
-    "koa": "^0.18.1",
-    "koa-bodyparser": "^1.4.0",
-    "koa-flash": "^0.1.0",
+    "koa": "^0.19.1",
+    "koa-auto-load": "0.0.1",
+    "koa-bodyparser": "^1.5.0",
+    "koa-favicon": "^1.2.0",
+    "koa-flash": "^1.0.0",
     "koa-logger": "^1.2.2",
-    "koa-routing": "^1.3.0",
+    "koa-redis": "^1.0.0",
     "koa-session": "^3.1.0",
-    "koa-session-mongoose": "^0.4.0",
-    "koa-static-cache": "^3.0.1",
-    "koa-validate": "^0.2.9",
-    "lodash": "^3.3.1",
-    "lrucache": "^0.2.0",
-    "mongoose": "^3.8.21",
+    "koa-session-mongo": "^1.0.1",
+    "koa-static-cache": "^3.1.1",
+    "koa-swig-render": "0.0.4",
+    "koa-trie-router": "^1.0.10",
+    "koa-validate": "^0.2.11",
+    "lodash": "^3.7.0",
+    "monk": "^1.0.1",
+    "redis": "^0.12.1",
+    "shortid": "^2.2.2",
+    "socket.io": "^1.3.5",
     "swig": "^1.4.2",
-    "thunk-redis": "^0.7.1",
-    "thunks": "^2.7.2"
+    "tracer": "^0.7.4",
+    "uid-number": "0.0.6",
+    "uuid": "^2.0.1"
   },
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-jshint": "^1.9.2",
-    "gulp-mocha": "^2.0.0",
-    "gulp-sequence": "^0.3.2",
-    "jshint-stylish": "^1.0.1",
-    "mocha": "^2.2.0",
-    "should": "^5.1.0",
-    "supertest": "^0.15.0",
-    "tracer": "^0.7.3"
+    "babel": "^5.1.10",
+    "gulp": "^3.8.11"
   }
 }
