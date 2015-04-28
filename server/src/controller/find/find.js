@@ -1,6 +1,12 @@
 export default {
-  send: function*() {
+  get: function*() {
     this.state.title = '发现'
     yield this.render('find')
+  },
+  post: function*() {
+
+  },
+  del: function*() {
+
   }
 }

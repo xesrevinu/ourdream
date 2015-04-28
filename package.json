@@ -37,6 +37,7 @@
     "koa-trie-router": "^1.0.10",
     "koa-validate": "^0.2.11",
     "lodash": "^3.7.0",
+    "mongoose": "^4.0.2",
     "monk": "^1.0.1",
     "redis": "^0.12.1",
     "shortid": "^2.2.2",

@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {{title}} -Ourdream. {% endblock %}</title>
+    <title>{% block title %} {{title}} - Ourdream {% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="{{webset.keywords}}" />
     <meta name="description" content="{{webset.description}}">
@@ -40,12 +40,12 @@
                     <li><a href="javascript:void(0)">设置中心</a></li>
                     <li><a href="javascript:void(0)">帮助</a></li>
                     <li class="divider"></li>
-                    <li><a href="/user/logout">退出</a></li>
+                    <li><a href="/logout">退出</a></li>
                 </ul>
             </li>
             {% else %}
-            <li><a href="/user/login">登录</a></li>
-            <li><a href="/user/register">注册</a></li>
+            <li><a href="/login">登录</a></li>
+            <li><a href="/register">注册</a></li>
             {% endif %}
 
         </ul>

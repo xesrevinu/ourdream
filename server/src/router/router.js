@@ -5,7 +5,6 @@ export default (app) => {
   const routeFilePath = {
     'index': './index',
     'user': './user',
-    'profile': './profile',
     'find': './find',
     'api': './api'
   }

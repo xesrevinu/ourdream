@@ -11,7 +11,6 @@ import render from 'koa-swig-render'
 import redisStore from 'koa-redis'
 import mongoStore from 'koa-session-mongo'
 import redisClient from '../redis'
-import settings from './setting'
 
 function middleware() {
     return {
