@@ -22,7 +22,6 @@ class Server extends koa {
     }
   }
   start(callback) {
-
     this.router()
     this.server = http.createServer(this.app.callback())
     this.socket()
@@ -31,7 +30,7 @@ class Server extends koa {
   }
   router() {
     var mongodb = mongoConnection(config.mongo.host + config.mongo.database)
-    route(this.app)
+    route(this.app);
   }
   socket(done) {
     new ioSocket(this.server).connection()
