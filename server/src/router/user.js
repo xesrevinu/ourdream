@@ -9,7 +9,7 @@ export default (route, middleware, controller) => {
 
   route('/register')
     .get(controller.register.get)
-    .post(controller.register.post)
+    .post(middleware.user.checkModel, controller.register.post)
 
   route('/logout')
     .get(controller.login.logout)

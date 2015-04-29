@@ -6,8 +6,8 @@ import http from 'http'
 import config from './config/config'
 import route from './router/router'
 import ioSocket from './socket/conection'
-
-//const cpus = os.cpus().length
+import mongoConnection from './model/connection'
+  //const cpus = os.cpus().length
 
 class Server extends koa {
   constructor() {
@@ -30,6 +30,7 @@ class Server extends koa {
 
   }
   router() {
+    var mongodb = mongoConnection(config.mongo.host + config.mongo.database)
     route(this.app)
   }
   socket(done) {

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-
 const Schema = mongoose.Schema
 const Card = Schema({
   // 标题
@@ -56,4 +55,4 @@ const Card = Schema({
   collection: 'Posts'
 })
 
-export default Card
+export default mongoose.model('Posts', Card)

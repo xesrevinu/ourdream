@@ -11,11 +11,12 @@ import render from 'koa-swig-render'
 import redisStore from 'koa-redis'
 import mongoStore from 'koa-session-mongo'
 import redisClient from '../redis'
+import webset from './webset'
 
 function middleware() {
     return {
       user: require('./user'),
-      auth: require('./auth')
+      auth: require('./auth'),
     }
   }
   // const map = {
@@ -44,11 +45,9 @@ export default (app) => {
     root: app.config.viewPath,
     ext: 'html',
     cache: false,
-    locals: {
-      a: 1
-    }
+    locals: {}
   }))
-
+  app.use(webset(app))
   app.use(middlewares.auth.checkLogin)
 
   app.use(trieRouter(app))

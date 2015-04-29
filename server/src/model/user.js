@@ -1,6 +1,12 @@
 import mongoose from 'mongoose'
-import PostSchema from './post'
+import PostModel from './post'
 const Schema = mongoose.Schema
+  /**
+   * 用户模型
+   * @type {Schema}
+   * email 必须
+   * password 必须
+   */
 const User = Schema({
   email: {
     type: String,
@@ -8,11 +14,12 @@ const User = Schema({
     unique: true
   },
   name: {
-    tyep: String
+    tyep: String,
+    default: ''
   },
   phone: {
     type: String,
-    required: true
+    required: false
   },
   active: {
     type: Boolean,
@@ -43,18 +50,18 @@ const User = Schema({
   },
   cover: {
     type: String,
-    required: true
+    required: false
   },
   level: {
     type: Number,
     default: 0
   },
   released: {
-    type: [PostSchema],
+    type: [PostModel.Schema],
     default: []
   },
   aboutme: {
-    type: [PostSchema],
+    type: [PostModel.Schema],
     default: []
   },
   // 权限
@@ -69,11 +76,22 @@ const User = Schema({
   //创建时间
   createtime: {
     type: Date,
-    required: false,
+    required: true,
     default: Date.now()
   }
 }, {
   safe: true,
   collection: 'users'
 })
-export default User
+
+User.statics = {
+  newUser: function() {
+    console.log(123)
+  }
+}
+User.methods = {
+  save: function*(callback) {
+    yield this.db.model('Users').create(this, callback)
+  }
+}
+export default mongoose.model('Users', User)
