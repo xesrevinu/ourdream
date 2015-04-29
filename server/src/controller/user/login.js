@@ -17,6 +17,5 @@ export default {
     }
     this.redirect('back')
     return
-    //yield next
   }
 }
