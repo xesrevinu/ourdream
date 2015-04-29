@@ -24,7 +24,7 @@ npm run build-watch
 ```
 
 ```js
-pm2 start server/dist/app.js --watch
+nodemon  server/dist/app.js
 ```
 
 部署：
@@ -35,10 +35,4 @@ npm run build
 
 ```js
 pm2 start server/dist/app.js -i 0
-```
-
-or
-
-```js
-npm start
 ```
