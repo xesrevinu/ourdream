@@ -19,6 +19,7 @@
   "dependencies": {
     "materialize": "~0.96.1",
     "bootstrap": "~3.3.4",
-    "bootstrap-material-design": "~0.3.0"
+    "bootstrap-material-design": "~0.3.0",
+    "react": "~0.13.2"
   }
 }
