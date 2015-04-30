@@ -30,3 +30,4 @@ node_modules
 .lock-wscript
 public/build
 public/dist
+dump.rdb
