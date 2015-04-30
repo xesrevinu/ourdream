@@ -26,7 +26,7 @@ npm run build-watch
 
 ####新建一个tab，运行
 ```js
-nodemon  server/dist/app.js
+npm run dev
 ```
 ****
 
