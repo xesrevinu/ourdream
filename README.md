@@ -8,8 +8,9 @@
 * monogodb
 * redis
 
+###安装静态资源：
 ```js
-cd ${project}/public/ && bower install
+npm run setup
 ```
 
 ###运行：
