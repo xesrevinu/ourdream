@@ -8,8 +8,9 @@
 * monogodb
 * redis
 
-###安装静态资源：
+###安装资源：
 ```js
+npm install
 npm run setup
 ```
 
