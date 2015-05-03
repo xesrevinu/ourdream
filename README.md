@@ -35,5 +35,5 @@ npm run dev
 部署：
 
 ```js
-npm run deploy
+npm run [undefined]
 ```
