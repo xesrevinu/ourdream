@@ -39,6 +39,8 @@
   </div>
 </footer>
 <script src="/build/vendors.js"></script>
-<script src="/build/bundle.js"></script>
+{% if SCRIPT_EXIST %}
+<script src="/build{{SCRIPT_URL}}"></script>
+{% endif %}
 </body>
 </html>

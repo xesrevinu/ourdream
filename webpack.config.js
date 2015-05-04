@@ -23,7 +23,7 @@ var config = {
     // 编译文件
     output: {
         path: process.env.NODE_ENV === 'production' ? './public/dist' : './public/build',
-        filename: 'bundle.js',
+        filename: "[name].js",
         publicPath: '/public'
     },
     module: {

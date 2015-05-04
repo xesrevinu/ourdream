@@ -14,8 +14,9 @@ import webset from './webset'
 
 function middleware() {
     return {
-      user: require('./user'),
-      auth: require('./auth'),
+      user   : require('./user'),
+      auth   : require('./auth'),
+      helper : require('./helper')
     }
   }
   // const map = {
@@ -48,6 +49,8 @@ export default (app) => {
   }))
   app.use(webset(app))
   app.use(middlewares.auth.checkLogin)
+  
+  app.use(middlewares.helper.setPageScriptURL)
 
   app.use(trieRouter(app))
     //app.use(settings)
