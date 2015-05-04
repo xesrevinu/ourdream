@@ -1,3 +1,4 @@
+import zlib from 'zlib'
 import flash from 'koa-flash'
 import logger from 'koa-logger'
 import session from 'koa-session'
@@ -23,8 +24,14 @@ export default (app) => {
   const config = app.config
   app.keys = config.keys
   app.use(bodyparser())
-  app.use(logger())
+  app.use(responseTime())
   app.use(favicon(config.faviconPath));
+  app.use(logger())
+  app.use(compress({
+    //flush: zlib.Z_TREES,
+    //最高压缩
+    level:zlib.Z_BEST_COMPRESSION,
+  }))
   app.use(session({
     store: mongoStore.create({
       db: 'ourdream'

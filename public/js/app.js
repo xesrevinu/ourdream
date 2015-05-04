@@ -1,14 +1,13 @@
 import React from 'react'
 import AppComponent from './AppComponent'
-import loginComponent from './loginComponent'
-
+import LoginComponent from './LoginComponent'
 const selfUrl = window.location.pathname;
 const reactList = {
   '/': [{
-    'hi': < AppComponent />
+    'hi': AppComponent
   }],
   '/login': [{
-    'login': < loginComponent /> , // < AppComponent />
+    'login': LoginComponent
   }]
 }
 
@@ -19,7 +18,7 @@ if (reactList[selfUrl]) {
       let ele = document.getElementById(k)
       if (ele) {
         let component = components[i][k]
-        React.render(component, ele)
+        React.render(React.createElement(component), ele)
       }
     }
   }
