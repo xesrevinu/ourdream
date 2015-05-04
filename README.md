@@ -1,6 +1,7 @@
 # ourdream 0.0.1
 
-###采用babel编写es6版
+###采用es6语法编写node.js应用
+
 ***
 
 ###安装：
