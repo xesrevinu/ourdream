@@ -8,7 +8,14 @@ const reactList = {
     'hi': < AppComponent />
   }],
   '/login': [{
-    'login': < loginComponent /> // < AppComponent />
+    'login': < loginComponent />, // < AppComponent />
+    'demo': React.createClass({
+        render: function() {
+          return ( < div className = "commentBox" >
+            Hello, world!I am a CommentBox. < /div>
+          );
+        }
+      })
   }]
 }
 if (reactList[selfUrl]) {
