@@ -1,13 +1,9 @@
 import koa from 'koa'
 import http from 'http'
-  //import os from 'os'
-  //import cluster from 'cluster'
-  //import child_process from 'child_process'
 import config from './config/config'
 import route from './router/router'
 import ioSocket from './socket/conection'
 import mongoConnection from './model/connection'
-  //const cpus = os.cpus().length
 
 class Server extends koa {
   constructor() {

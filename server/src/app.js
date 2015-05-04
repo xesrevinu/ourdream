@@ -1,12 +1,10 @@
-'use strict'
-import polyfill from 'babel/polyfill'
-  //发布,采用config/config-server-{NODE_ENV}.js作为配置
 process.env.NODE_ENV = 'development';
+//发布,采用config/config-server-{NODE_ENV}.js作为配置
 //process.env.NODE_ENV= 'production';
 //process.env.NODE_ENV= 'test';
-
-import Server from './server'
+import polyfill from 'babel/polyfill'
 import tracer from 'tracer'
+import Server from './server'
 import config from './config/config'
 
 const logger = tracer.console(config.cliColor)
@@ -16,12 +14,11 @@ server.start(function(e) {
   let {
     action, status, port
   } = e
-
-  const serverInfo = `
+  const serverInfo =`
     server ${action}
     -----------------------
     server status: ${status}
     server listen port:${port}
-`
+  `
   logger.info(serverInfo)
 })
