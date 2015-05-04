@@ -26,7 +26,6 @@
   "dependencies": {
     "bootstrap": "^3.3.4",
     "cli-color": "^0.3.3",
-    "jsx-loader": "^0.13.2",
     "koa": "^0.19.1",
     "koa-bodyparser": "^1.5.0",
     "koa-compress": "^1.0.8",
