@@ -1,10 +1,10 @@
-
 var webpack = require('webpack');
 var bower_dir = __dirname + '/public/bower_components';
 
 var config = {
+    debug: process.env.NODE_ENV === 'production' ? false : true,
     // 增加第三方
-    addVendor: function (name, path) {
+    addVendor: function(name, path) {
         this.resolve.alias[name] = path;
         this.module.noParse.push(new RegExp('^' + name + '$'));
     },
@@ -15,7 +15,10 @@ var config = {
     },
     // 指定别名
     resolve: {
-        alias: {}
+        alias: {},
+        modulesDirectories: ['bower_components',
+            'node_modules'
+        ]
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
@@ -28,9 +31,11 @@ var config = {
     },
     module: {
         noParse: [],
-        loaders: [
-            { test: /\.js$/, loader: 'jsx-loader' }
-        ]
+        loaders: [{
+            test: /\.js?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader' //?optional=runtime
+        }]
     }
 };
 
