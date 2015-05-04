@@ -8,16 +8,10 @@ const reactList = {
     'hi': < AppComponent />
   }],
   '/login': [{
-    'login': < loginComponent />, // < AppComponent />
-    'demo': React.createClass({
-        render: function() {
-          return ( < div className = "commentBox" >
-            Hello, world!I am a CommentBox. < /div>
-          );
-        }
-      })
+    'login': < loginComponent /> , // < AppComponent />
   }]
 }
+
 if (reactList[selfUrl]) {
   const components = reactList[selfUrl]
   for (let i = 0; i < components.length; i++) {
