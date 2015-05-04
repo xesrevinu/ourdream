@@ -22,8 +22,8 @@ export default (app) => {
   }
   const config = app.config
   app.keys = config.keys
-  app.use(body())
-  app.use(koaLogger())
+  app.use(bodyparser())
+  app.use(logger())
   app.use(favicon(config.faviconPath));
   app.use(session({
     store: mongoStore.create({
