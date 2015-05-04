@@ -14,9 +14,9 @@ import webset from './webset'
 
 export default (app) => {
   const middlewares = {
-    user : require('./user'),
-    auth : require('./auth'),
-    helper : require('./helper')
+    user: require('./user'),
+    auth: require('./auth'),
+    helper: require('./helper')
   }
   const config = app.config
   app.keys = config.keys
@@ -43,9 +43,6 @@ export default (app) => {
   }))
   app.use(webset(app))
   app.use(middlewares.auth.checkLogin)
-  
-  app.use(middlewares.helper.setPageScriptURL)
-
   app.use(trieRouter(app))
     //app.use(settings)
 
