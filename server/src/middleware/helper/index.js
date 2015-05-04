@@ -9,7 +9,7 @@ export default {
         var _exists = fs.existsSync(script_path)
         if(_exists) {
             this.state.SCRIPT_EXIST = _exists
-            this.state.SCRIPT_URL = script_url
+            this.state.SCRIPT_URL = process.env == 'production' ? '/dist' + script_url : '/build' + script_url
         }
         yield next
     }
