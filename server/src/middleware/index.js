@@ -18,13 +18,12 @@ export default (app) => {
   const middlewares = {
     user: require('./user'),
     auth: require('./auth'),
+    helper: require('./helper')
   }
   const config = app.config
   app.keys = config.keys
-  app.use(bodyparser())
-  app.use(logger())
-  app.use(compress())
-  app.use(responseTime())
+  app.use(body())
+  app.use(koaLogger())
   app.use(favicon(config.faviconPath));
   app.use(session({
     store: mongoStore.create({
@@ -38,7 +37,7 @@ export default (app) => {
   app.use(validate())
   app.use(staticCache(config.staticPath, config.staticOpt))
   app.use(render({
-    root: app.config.viewPath,
+    root: config.viewPath,
     ext: 'html',
     cache: config.env === 'development' ? 'memory' : false,
     locals: {}
