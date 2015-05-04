@@ -36,7 +36,7 @@ export default (app) => {
   app.use(staticCache(config.staticPath, config.staticOpt))
     // views中间件必须在路由上面
   app.use(render({
-    root: app.config.viewPath,
+    root: config.viewPath,
     ext: 'html',
     cache: false,
     locals: {}
