@@ -12,18 +12,12 @@ import mongoStore from 'koa-session-mongo'
 import redisClient from '../redis'
 import webset from './webset'
 
-function middleware() {
-    return {
-      user   : require('./user'),
-      auth   : require('./auth'),
-      helper : require('./helper')
-    }
-  }
-  // const map = {
-  //   render: 'server/dist/middleware/render'
-  // }
 export default (app) => {
-  const middlewares = middleware()
+  const middlewares = {
+    user : require('./user'),
+    auth : require('./auth'),
+    helper : require('./helper')
+  }
   const config = app.config
   app.keys = config.keys
   app.use(body())
