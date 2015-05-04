@@ -1,32 +1,33 @@
-import koaLogger from 'koa-logger'
+import logger from 'koa-logger'
 import session from 'koa-session'
 import favicon from 'koa-favicon'
 import trieRouter from 'koa-trie-router'
 import validate from 'koa-validate'
 import flash from 'koa-flash'
 import staticCache from 'koa-static-cache'
-import body from 'koa-bodyparser'
+import bodyparser from 'koa-bodyparser'
 import render from 'koa-swig-render'
 import redisStore from 'koa-redis'
 import mongoStore from 'koa-session-mongo'
+import responseTime from 'koa-response-time'
+import compress from 'koa-compress'
 import redisClient from '../redis'
 import webset from './webset'
 
 function middleware() {
-    return {
-      user: require('./user'),
-      auth: require('./auth'),
-    }
+  return {
+    user: require('./user'),
+    auth: require('./auth'),
   }
-  // const map = {
-  //   render: 'server/dist/middleware/render'
-  // }
+}
 export default (app) => {
   const middlewares = middleware()
   const config = app.config
   app.keys = config.keys
-  app.use(body())
-  app.use(koaLogger())
+  app.use(bodyparser())
+  app.use(logger())
+  app.use(compress())
+  app.use(responseTime())
   app.use(favicon(config.faviconPath));
   app.use(session({
     store: mongoStore.create({
@@ -43,7 +44,7 @@ export default (app) => {
   app.use(render({
     root: app.config.viewPath,
     ext: 'html',
-    cache: false,
+    cache: app.config.env === 'development' ? 'memory' : false,
     locals: {}
   }))
   app.use(webset(app))
