@@ -3,7 +3,10 @@ import AppComponent from './AppComponent'
 import LoginComponent from './LoginComponent'
 const selfUrl = window.location.pathname;
 
+
+require('test.sass')
 require('base.sass')
+
 
 const reactList = {
   '/': [{
