@@ -4,8 +4,8 @@ import LoginComponent from './LoginComponent'
 const selfUrl = window.location.pathname;
 
 
-require('test.sass')
-require('base.sass')
+require('test.scss')
+require('base.scss')
 
 
 const reactList = {

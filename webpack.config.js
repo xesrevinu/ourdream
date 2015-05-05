@@ -4,9 +4,9 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require("path");
 
 const sassLoaders = [
-  "css-loader",
-  "autoprefixer-loader?browsers=last 2 version",
-  "sass-loader?indentedSyntax=sass&includePaths[]=" + path.resolve(__dirname, "/public/css"),
+    "css-loader",
+    "autoprefixer-loader?browsers=last 2 version",
+    "sass-loader?includePaths[]=" + path.resolve(__dirname, "/public/css"),
 ];
 
 const config = {
@@ -42,17 +42,17 @@ const config = {
     },
     module: {
         noParse: [],
-        loaders: [
-            {
-                test: /\.js?$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader?optional=runtime'
-            },
-            {
-                test: /\.sass$/,
-                loader: ExtractTextPlugin.extract("style-loader", sassLoaders.join("!")),
-            }
-        ]
+        loaders: [{
+            test: /\.js?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader?optional=runtime'
+        }, {
+            test: /\.css$/,
+            loader: 'style!css!autoprefixer'
+        }, {
+            test: /\.scss$/,
+            loader: ExtractTextPlugin.extract("style-loader", sassLoaders.join("!"))
+        }]
     }
 };
 
