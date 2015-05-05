@@ -12,9 +12,12 @@ export default {
     let body = this.request.body
     body.cover = 'https://avatars3.githubusercontent.com/u/7436176?v=3&s=460'
     let newUser = new User(body);
-    var x =
+    
+    try {
       yield newUser.save()
-    console.log(x)
+    } catch(e) {
+      console.log(e);
+    }
     this.body = 'post'
   }
 }

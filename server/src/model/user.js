@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import PostModel from './post'
+import co from 'co'
 const Schema = mongoose.Schema
   /**
    * 用户模型
@@ -84,14 +85,14 @@ const User = Schema({
   collection: 'users'
 })
 
-User.statics = {
-  newUser: function() {
-    console.log(123)
-  }
-}
-User.methods = {
-  save: function*(callback) {
-    yield this.db.model('Users').create(this, callback)
-  }
-}
+// User.statics = {
+//   newUser: function() {
+//     console.log(123)
+//   }
+// }
+// User.methods = {
+//   save: function*(callback) {
+//     yield this.db.model('Users').create(this, callback)
+//   }
+// }
 export default mongoose.model('Users', User)
