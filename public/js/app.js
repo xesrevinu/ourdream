@@ -2,6 +2,9 @@ import React from 'react'
 import AppComponent from './AppComponent'
 import LoginComponent from './LoginComponent'
 const selfUrl = window.location.pathname;
+
+require('base.sass')
+
 const reactList = {
   '/': [{
     'hi': AppComponent

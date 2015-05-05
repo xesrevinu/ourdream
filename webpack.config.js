@@ -1,7 +1,15 @@
-var webpack = require('webpack');
-var bower_dir = __dirname + '/public/bower_components';
+const webpack = require('webpack');
+const bower_dir = __dirname + '/public/bower_components';
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require("path");
 
-var config = {
+const sassLoaders = [
+  "css-loader",
+  "autoprefixer-loader?browsers=last 2 version",
+  "sass-loader?indentedSyntax=sass&includePaths[]=" + path.resolve(__dirname, "/public/css"),
+];
+
+const config = {
     debug: process.env.NODE_ENV === 'production' ? false : true,
     // 增加第三方
     addVendor: function(name, path) {
@@ -16,12 +24,15 @@ var config = {
     // 指定别名
     resolve: {
         alias: {},
-        modulesDirectories: ['bower_components',
-            'node_modules'
+        modulesDirectories: [
+            'bower_components',
+            'node_modules',
+            'css'
         ]
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
+        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
+        new ExtractTextPlugin("[name].css")
     ],
     // 编译文件
     output: {
@@ -31,11 +42,17 @@ var config = {
     },
     module: {
         noParse: [],
-        loaders: [{
-            test: /\.js?$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader?optional=runtime'
-        }]
+        loaders: [
+            {
+                test: /\.js?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader?optional=runtime'
+            },
+            {
+                test: /\.sass$/,
+                loader: ExtractTextPlugin.extract("style-loader", sassLoaders.join("!")),
+            }
+        ]
     }
 };
 

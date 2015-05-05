@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 import PostModel from './post'
-import co from 'co'
 const Schema = mongoose.Schema
   /**
    * 用户模型
