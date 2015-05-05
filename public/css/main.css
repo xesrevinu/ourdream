@@ -47,7 +47,7 @@ html,body{
 }
 .login-cover{
   height:250px;
-  background-image: url('../image/login.jpeg');
+  background-image: url('/image/login.jpeg');
   /*background-image: url('https://unsplash.it/g/458/354/?gravity=east&&random');*/
   background-size:cover;
 }
@@ -64,7 +64,7 @@ html,body{
 }
 .cover-pull{
   /*background-image: url('https://unsplash.it/1200/400');*/
-  background-image: url('../image/cover.jpeg');
+  background-image: url('/image/cover.jpeg');
   background-size:cover;
   color:white;
 }

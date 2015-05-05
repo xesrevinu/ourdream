@@ -1,19 +1,21 @@
 import React from 'react'
-import AppComponent from './AppComponent'
-import LoginComponent from './LoginComponent'
+import appComponent from './appComponent'
+import loginComponent from './loginComponent'
+import registerComponent from './registerComponent'
 const selfUrl = window.location.pathname;
-
 
 require('test.scss')
 require('base.scss')
 
-
 const reactList = {
   '/': [{
-    'hi': AppComponent
+    'hi': appComponent
   }],
   '/login': [{
-    'login': LoginComponent
+    'login': loginComponent
+  }],
+  '/register': [{
+    'register': registerComponent
   }]
 }
 
@@ -24,7 +26,9 @@ if (reactList[selfUrl]) {
       let ele = document.getElementById(k)
       if (ele) {
         let component = components[i][k]
-        React.render(React.createElement(component), ele)
+        setTimeout(() => {
+          React.render(React.createElement(component), ele)
+        }, 1000)
       }
     }
   }
