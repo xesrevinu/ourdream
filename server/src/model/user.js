@@ -50,7 +50,7 @@ const User = Schema({
     default:''
   },
   weixin: {
-    type: String
+    type: String,
     default:''
   },
   cover: {

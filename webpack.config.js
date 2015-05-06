@@ -11,11 +11,6 @@ const sassLoaders = [
 
 const config = {
     debug: process.env.NODE_ENV === 'production' ? false : true,
-    // 增加第三方
-    addVendor: function(name, path) {
-        this.resolve.alias[name] = path;
-        this.module.noParse.push(new RegExp('^' + name + '$'));
-    },
     // 入口文件
     entry: {
         app: ['./public/js/app.js'],
@@ -40,12 +35,17 @@ const config = {
         filename: "bundle.js",
         publicPath: '/public'
     },
+    externals: {
+        //don't bundle the 'react' npm package with our bundle.js
+        //but get it from a global 'React' variable
+        'react': 'React'
+    },
     module: {
         noParse: [],
         loaders: [{
             test: /\.js?$/,
             exclude: /node_modules/,
-            loader: 'babel-loader?optional=runtime'
+            loader: 'babel-loader'
         }, {
             test: /\.css$/,
             loader: 'style!css!autoprefixer'
@@ -56,9 +56,8 @@ const config = {
     }
 };
 
-
 // 不加到bundle来
-config.addVendor('react', bower_dir + '/react/react.min.js');
+// config.addVendor('react', bower_dir + '/react/react.min.js');
 //config.addVendor('bootstrap', bower_dir + '/bootstrap/dist/js/bootstrap.min.js');
 //config.addVendor('jquery', bower_dir + '/jquery/dist/jquery.min.js');
 
