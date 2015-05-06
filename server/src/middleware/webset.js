@@ -4,15 +4,18 @@ export default (app) => {
     this.set('Access-Control-Allow-Credentials', true)
     this.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT')
     this.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization')
-
     if (this.method === 'OPTIONS') {
       this.status = 200
       return
     }
-
     yield next
   })
-
+  app.use(function *(next){
+    if(this.logind){
+      this.state.user = this.session.user
+    }
+    yield next
+  })
   return function*(next) {
     yield next
   }

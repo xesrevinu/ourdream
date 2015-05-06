@@ -8,7 +8,7 @@
     <meta name="description" content="{{webset.description}}">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/build/app.css">
-    
+
     <!-- <link rel="stylesheet" href="/bower_components/bootstrap-material-design/dist/css/material.min.css"> -->
     {% block style %}
     {% endblock %}
@@ -36,7 +36,7 @@
         <ul class="nav navbar-nav navbar-right">
             {% if user %}
             <li class="dropdown">
-                <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.name || user.uid}} <b class="caret"></b></a>
+                <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.email }} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="javascript:void(0)">个人中心</a></li>
                     <li><a href="javascript:void(0)">设置中心</a></li>

@@ -13,7 +13,7 @@ const User = Schema({
     required: true,
     unique: true
   },
-  name: {
+  nicename: {
     tyep: String,
     default: ''
   },
@@ -34,19 +34,24 @@ const User = Schema({
     default: 'man'
   },
   company: {
-    type: String
+    type: String,
+    default:''
   },
   description: {
-    type: String
+    type: String,
+    default:''
   },
   qq: {
-    type: String
+    type: String,
+    default:''
   },
   weibo: {
-    type: String
+    type: String,
+    default:''
   },
   weixin: {
     type: String
+    default:''
   },
   cover: {
     type: String,
@@ -84,14 +89,30 @@ const User = Schema({
   collection: 'users'
 })
 
-// User.statics = {
-//   newUser: function() {
-//     console.log(123)
-//   }
-// }
-// User.methods = {
-//   save: function*(callback) {
-//     yield this.db.model('Users').create(this, callback)
-//   }
-// }
+User.statics = {
+  exist: function(email) {
+    return this.find({
+      email: email
+    }).count().exec()
+  },
+  findId: function(id) {
+    return this.findOne({
+      _id: id
+    }).exec()
+  },
+  findAuth: function(email) {
+    return this.findOne({
+      email: email
+    }, {
+      _id: 1,
+      password: 1,
+      email: 1,
+      level: 1,
+      active: 1,
+    }).exec()
+  }
+}
+User.methods = {
+
+}
 export default mongoose.model('Users', User)
