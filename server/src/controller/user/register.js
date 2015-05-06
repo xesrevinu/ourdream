@@ -32,6 +32,5 @@ export default {
     this.session.user = {
       _id: newUser._id
     }
-    this.redirect('/')
   }
 }
