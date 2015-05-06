@@ -32,5 +32,9 @@ export default {
     this.session.user = {
       _id: newUser._id
     }
+    this.body={
+      status:1,
+      msg:'ok'
+    }
   }
 }
