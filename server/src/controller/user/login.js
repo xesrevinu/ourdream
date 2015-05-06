@@ -32,7 +32,10 @@ export default {
     this.session.user = {
       _id: userAuth._id
     }
-    this.redirect('/')
+    this.body={
+      status:1,
+      msg:'ok'
+    }
   },
   logout: function*() {
     if (this.logind) {
