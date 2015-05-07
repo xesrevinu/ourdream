@@ -1,4 +1,3 @@
-import React from 'react'
 import appComponent from './appComponent'
 import loginComponent from './loginComponent'
 import registerComponent from './registerComponent'
