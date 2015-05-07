@@ -14,7 +14,7 @@ const config = {
     // 入口文件
     entry: {
         app: ['./public/js/app.js'],
-        vendors: ['react']
+        vendors: ['react','jquery']
     },
     // 指定别名
     resolve: {
@@ -23,11 +23,12 @@ const config = {
             'bower_components',
             'node_modules',
             'css'
-        ]
+        ],
+        root: '/public/js'
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
-        new ExtractTextPlugin("[name].css")
+        new ExtractTextPlugin("app.css")
     ],
     // 编译文件
     output: {
@@ -38,7 +39,8 @@ const config = {
     externals: {
         //don't bundle the 'react' npm package with our bundle.js
         //but get it from a global 'React' variable
-        'react': 'React'
+        'react': 'React',
+        'jquery': 'jQuery'
     },
     module: {
         noParse: [],
@@ -55,10 +57,5 @@ const config = {
         }]
     }
 };
-
-// 不加到bundle来
-// config.addVendor('react', bower_dir + '/react/react.min.js');
-//config.addVendor('bootstrap', bower_dir + '/bootstrap/dist/js/bootstrap.min.js');
-//config.addVendor('jquery', bower_dir + '/jquery/dist/jquery.min.js');
 
 module.exports = config;
