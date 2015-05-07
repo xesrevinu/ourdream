@@ -1,4 +1,3 @@
-let find = {
+export default {
   find: require('./find'),
 }
-export default find

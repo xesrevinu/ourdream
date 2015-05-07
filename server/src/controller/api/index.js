@@ -1,6 +1,5 @@
-const api = {
+export default {
   user: require('./user'),
   posts: require('./posts'),
   users: require('./users')
 }
-export default api

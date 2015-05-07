@@ -1,12 +1,46 @@
 import uuid from 'uuid'
+import bcrypt from 'bcrypt'
 
 export default {
-  createUid() {
-      let uid = uuid.v1()
-        // return uid.substring(0, 10).replace(/[a-z,-]/g, parseInt(Math.random() * 9))
-      return uuid
+  createUid: function() {
+    let uid = uuid.v1();
+    // return uid.substring(0, 10).replace(/[a-z,-]/g, parseInt(Math.random() * 9))
+    return uuid
+  },
+  bcrypt: {
+    compare: function(data, hash) {
+      return new Promise(function(resolve, reject) {
+        bcrypt.compare(data, hash, function(err, matched) {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(matched);
+        });
+      });
     },
-    markMd5() {
-
-    }
+    hash: function(data, salt) {
+      return new Promise(function(resolve, reject) {
+        bcrypt.hash(data, salt, function(err, hash) {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(hash);
+        });
+      });
+    },
+    genSalt: function(rounds, ignore) {
+      return new Promise(function(resolve, reject) {
+        bcrypt.genSalt(rounds, ignore, function(err, salt) {
+          if (err) {
+            return reject(err);
+          }
+          return resolve(salt);
+        });
+      });
+    },
+    getRounds: bcrypt.getRounds,
+    genSaltSync: bcrypt.genSaltSync,
+    hashSync: bcrypt.hashSync,
+    compareSync: bcrypt.compareSync
+  }
 }

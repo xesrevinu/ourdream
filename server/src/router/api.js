@@ -1,9 +1,9 @@
-export default (route, middleware, controller) => {
+export default (route, middle, ctrl) => {
 
   route('/api/user/:uid')
-    .get(controller.user.get)
+    .get(ctrl.user.get)
   route('/api/user/:uid/posts')
-    .get(controller.posts.get)
+    .get(ctrl.users.get)
   route('/api/users')
-    .get(controller.users.get)
+    .get(ctrl.users.get)
 }

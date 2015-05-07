@@ -5,6 +5,7 @@ export default (app) => {
   const routeFilePath = {
     'index': './index',
     'user': './user',
+    'auth':'./auth',
     'find': './find',
     'api': './api'
   }
@@ -20,6 +21,7 @@ export default (app) => {
     try {
       ctrl = require('../controller/' + i)
     } catch (e) {
+      console.error(e)
       ctrl = {}
     }
     require(routeFilePath[i])(gPath, middlewares, ctrl)

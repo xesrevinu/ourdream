@@ -1,16 +1,4 @@
-export default (route, middleware, controller) => {
-
+export default (route, middle, ctrl) => {
   route('/user')
-    .get(controller.user.get)
-
-  route('/login')
-    .get(controller.login.get)
-    .post(middleware.auth.isLogin, controller.login.post)
-
-  route('/register')
-    .get(controller.register.get)
-    .post(middleware.user.checkModel, controller.register.post)
-
-  route('/logout')
-    .get(controller.login.logout)
+    .get(ctrl.user.get)
 }

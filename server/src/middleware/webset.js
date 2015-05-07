@@ -1,18 +1,19 @@
 export default (app) => {
+  require('./passport')(app);
   app.use(function*(next) {
-    this.set('Access-Control-Allow-Origin', 'http://localhost')
-    this.set('Access-Control-Allow-Credentials', true)
-    this.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT')
-    this.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization')
+    this.set('Access-Control-Allow-Origin', 'http://localhost');
+    this.set('Access-Control-Allow-Credentials', true);
+    this.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
+    this.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization');
     if (this.method === 'OPTIONS') {
-      this.status = 200
+      this.status = 200;
       return
     }
     yield next
   })
   app.use(function *(next){
     if(this.logind){
-      this.state.user = this.session.user
+      this.state.user = this.session.user;
     }
     yield next
   })

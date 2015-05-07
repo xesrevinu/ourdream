@@ -1,5 +1,10 @@
+import co from 'co'
 import mongoose from 'mongoose'
 import PostModel from './post'
+import {
+  bcrypt
+}
+from '../utils'
 const Schema = mongoose.Schema
   /**
    * 用户模型
@@ -13,7 +18,7 @@ const User = Schema({
     required: true,
     unique: true
   },
-  nicename: {
+  name: {
     tyep: String,
     default: ''
   },
@@ -35,23 +40,23 @@ const User = Schema({
   },
   company: {
     type: String,
-    default:''
+    default: ''
   },
   description: {
     type: String,
-    default:''
+    default: ''
   },
   qq: {
     type: String,
-    default:''
+    default: ''
   },
   weibo: {
     type: String,
-    default:''
+    default: ''
   },
   weixin: {
     type: String,
-    default:''
+    default: ''
   },
   cover: {
     type: String,
@@ -86,8 +91,32 @@ const User = Schema({
   }
 }, {
   safe: true,
-  collection: 'users'
+  collection: 'users',
+  toJSON: {
+    transform: function(doc, ret, options) {
+      delete ret.password;
+    },
+  },
 })
+User.pre("save", function (done) {
+  // only hash the password if it has been modified (or is new)
+  if (!this.isModified("password")) {
+    return done();
+  }
+
+  co.wrap(function*() {
+    try {
+      var salt = yield bcrypt.genSalt();
+      var hash = yield bcrypt.hash(this.password, salt);
+      this.password = hash;
+      done();
+    }
+    catch (err) {
+      done(err);
+    }
+  }).call(this).then(done);
+});
+
 
 User.statics = {
   exist: function(email) {
@@ -110,9 +139,21 @@ User.statics = {
       level: 1,
       active: 1,
     }).exec()
+  },
+  verifyPassword: function*(email, password) {
+    const user = yield this.findOne({email: email}).exec();
+    if (!user) {
+      throw new Error('User not found');
+    }
+    if (yield user.comparePassword(password)) {
+      return user;
+    }
+    throw new Error('Password does not match')
   }
 }
 User.methods = {
-
+  comparePassword: function(candidatePassword) {
+    return bcrypt.compare(candidatePassword, this.password);
+  }
 }
 export default mongoose.model('Users', User)

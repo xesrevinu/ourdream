@@ -1,4 +1,4 @@
-export default (route, middleware, controller) => {
+export default (route, middle, ctrl) => {
   route('/')
-    .get(controller.index.get)
+    .get(ctrl.index.get)
 }

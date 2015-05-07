@@ -2,18 +2,12 @@ import {
   User
 }
 from '../../model'
-let index = {
+
+export default {
   index: {
     get: function*() {
       this.state.title = '首页'
-      let user
-      if(this.logind){
-         user = yield User.findId(this.session.user._id)
-      }
-      yield this.render('index',{
-        user:user
-      })
+      yield this.render('index')
     }
   }
 }
-export default index

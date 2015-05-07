@@ -1,4 +1,4 @@
-export default (route, middleware, controller) => {
+export default (route, middle, ctrl) => {
   route('/find')
-    .get(controller.find.get)
+    .get(ctrl.find.get)
 }
