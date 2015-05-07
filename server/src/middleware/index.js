@@ -28,9 +28,7 @@ export default (app) => {
   app.use(bodyparser());
   app.use(responseTime());
   app.use(favicon(config.faviconPath));
-  if (config.env === 'development') {
-    app.use(logger());
-  }
+  app.use(logger());
   app.use(session({
     name: 'mysite',
     store: mongooseStore.create(),

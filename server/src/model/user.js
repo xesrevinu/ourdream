@@ -5,13 +5,13 @@ import {
   bcrypt
 }
 from '../utils'
-const Schema = mongoose.Schema
-  /**
-   * 用户模型
-   * @type {Schema}
-   * email 必须
-   * password 必须
-   */
+const Schema = mongoose.Schema;
+/**
+ * 用户模型
+ * @type {Schema}
+ * email 必须
+ * password 必须
+ */
 const User = Schema({
   email: {
     type: String,
@@ -98,37 +98,54 @@ const User = Schema({
     },
   },
 })
-User.pre("save", function (done) {
-  // only hash the password if it has been modified (or is new)
+User.pre('save', function(done) {
+  // 密码是否被修改或者新值
   if (!this.isModified("password")) {
     return done();
   }
-
   co.wrap(function*() {
     try {
-      var salt = yield bcrypt.genSalt();
-      var hash = yield bcrypt.hash(this.password, salt);
+      const salt = yield bcrypt.genSalt();
+      const hash = yield bcrypt.hash(this.password, salt);
       this.password = hash;
       done();
-    }
-    catch (err) {
+    } catch (err) {
       done(err);
     }
   }).call(this).then(done);
 });
 
-
 User.statics = {
+  /**
+   * 查找用户是否存在
+   * @param  {String} email 邮箱地址
+   * @return {Number}       用户数
+   */
   exist: function(email) {
-    return this.find({
+    return this.count({
       email: email
-    }).count().exec()
-  },
-  findId: function(id) {
-    return this.findOne({
-      _id: id
     }).exec()
   },
+  /**
+   * 根据email查找用户资料
+   * @param  {String} email 邮箱地址
+   * @return {Object}       用户资料
+   */
+  findUser: function(email) {
+    return this.findOne({
+      email: email
+    }, {
+      /*salt:0,
+      hash:0,
+      */
+      __v:0
+    }).exec()
+  },
+  /**
+   * 查找用户验证信息
+   * @param  {String} email 邮箱地址
+   * @return {Object}       验证信息
+   */
   findAuth: function(email) {
     return this.findOne({
       email: email
@@ -140,18 +157,34 @@ User.statics = {
       active: 1,
     }).exec()
   },
+  /**
+   * 登录验证
+   * @param {String} email         邮箱地址
+   * @param {String} password      密码
+   * @yield {[type]} [description]
+   */
   verifyPassword: function*(email, password) {
-    const user = yield this.findOne({email: email}).exec();
+    const user =
+      yield this.findOne({
+        email: email
+      }).exec();
     if (!user) {
-      throw new Error('User not found');
+      throw new Error('用户不存在');
     }
-    if (yield user.comparePassword(password)) {
+    // 对比密码返回Boolean
+    if (
+      yield user.comparePassword(password)) {
       return user;
     }
-    throw new Error('Password does not match')
+    throw new Error('密码不正确')
   }
 }
 User.methods = {
+  /**
+   * 对比密码
+   * @param  {String} candidatePassword  被验证密码
+   * @return {Boolean}                   是否相同
+   */
   comparePassword: function(candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password);
   }

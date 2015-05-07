@@ -1,5 +1,5 @@
 export default {
-  login:require('./login'),
-  register:require('./register'),
-  logout:require('./logout')
+  login: require('./login'),
+  register: require('./register'),
+  logout: require('./logout')
 }

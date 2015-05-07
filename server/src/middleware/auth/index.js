@@ -1,9 +1,9 @@
 export default {
-  checkLogin: function*(next) {
-    this.logind = false
-    if (this.session.user && this.session.user._id) {
-      this.logind = true
+  isAuthenticated: function*(next) {
+    if(this.isAuthenticated()){
+      next()
     }
+    this.redirect('back')
     yield next
   }
 }

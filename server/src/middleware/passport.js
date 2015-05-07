@@ -19,18 +19,21 @@ export default (app) => {
     }
   });
   passport.serializeUser(function(user, done) {
-    console.log(345)
     done(null, user._id)
-  })
+  });
   passport.deserializeUser(function(id, done) {
-    console.log(123)
-    User.findById(id, done)
-  })
-  passport.use(new LocalStrategy(function(email, password, done) {
-    console.log(678)
-    done(null,{
-      _id:123123,
-      a:100
+    User.findById(id,done)
+  });
+  passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+  }, function(username, password, done) {
+    co(function*() {
+      return yield User.verifyPassword(username, password)
+    }).then(function(user) {
+      done(null, user)
+    }).catch(function(err) {
+      done(null,false,err.message)
     })
-  }));
+  }))
 }
