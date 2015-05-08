@@ -1,6 +1,6 @@
 export default {
   logout: function*() {
-    this.logout();
+    this.req.logout();
     this.session = null;
     this.status = 204;
     this.body = {

@@ -1,9 +1,17 @@
 export default {
-  isAuthenticated: function*(next) {
-    if(this.isAuthenticated()){
-      next()
+  isAuthed: function *(next) {
+    if(this.req.isAuthenticated()){
+        yield next
+    }else{
+        this.redirect('/login')
     }
-    this.redirect('back')
-    yield next
+  },
+  isLogined: function *(next){
+     if(this.req.user) {
+        this.state.user = this.req.user
+        yield next
+     } else {
+        yield next
+     }
   }
 }

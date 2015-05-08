@@ -22,7 +22,7 @@ export default (app) => {
     done(null, user._id)
   });
   passport.deserializeUser(function(id, done) {
-    User.findById(id,done)
+    User.findById(id,'-password',done)
   });
   passport.use(new LocalStrategy({
     usernameField: 'email',

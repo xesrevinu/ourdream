@@ -50,6 +50,7 @@ export default (app) => {
     ext: 'html',
     cache: config.env === 'development' ? 'memory' : false
   }));
+  app.use(middlewares.auth.isLogined);
   app.use(trieRouter(app));
   return middlewares
 }

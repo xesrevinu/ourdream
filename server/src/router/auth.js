@@ -8,5 +8,5 @@ export default (route,middle,ctrl)=>{
     .post(ctrl.register.register)
 
   route('/logout')
-    .get(ctrl.login.logout)
+    .get(ctrl.logout.logout)
 }
