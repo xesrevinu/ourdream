@@ -1,7 +1,7 @@
 'use strict'
 import clc from 'cli-color'
 const root = process.cwd();
-const dev = process.env.NODE_ENV || 'development'
+const env = process.env.NODE_ENV || 'development'
 export default {
 	root: root,
 	debug: true,
@@ -38,7 +38,7 @@ export default {
 	},
 	staticOpt: {
 		// 3day
-		maxAge: dev !== 'development' ? 24 * 60 * 60 * 3 : null
+		maxAge: env !== 'development' ? 24 * 60 * 60 * 3 : null
 	},
 	memoryCapacity: 500,
 	serverPath: root + "/server/dist",

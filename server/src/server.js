@@ -7,10 +7,10 @@ import mongoConnection from './model/connection'
 
 class Server extends koa {
   constructor() {
-    super()
-    this.app = koa()
-    this.app.config = config
-      //pm2 实现reload热重载 这些先打酱油
+    super();
+    this.app = koa();
+    this.app.config = config;
+    //pm2 实现reload热重载 这些先打酱油
     this.serverEvent = {
       action: 'start',
       status: 'online',
@@ -18,15 +18,17 @@ class Server extends koa {
     }
   }
   start(callback) {
-    this.router()
-    this.server = http.createServer(this.app.callback())
+    this.router();
+    this.server = http.createServer(this.app.callback());
     // this.socket()
-    this.server.listen(config.listenPort, callback(this.serverEvent))
-
+    this.mongodb();
+    this.server.listen(config.listenPort, callback(this.serverEvent));
   }
   router() {
-    var mongodb = mongoConnection(config.mongo.host + config.mongo.database)
-    route(this.app);
+    route(this.app)
+  }
+  mongodb() {
+    const mongodb = mongoConnection(config.mongo.host + config.mongo.database);
   }
   socket(done) {
     new ioSocket(this.server).connection()
