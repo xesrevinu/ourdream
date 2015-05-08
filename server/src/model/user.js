@@ -1,6 +1,6 @@
 import co from 'co'
 import mongoose from 'mongoose'
-import PostModel from './post'
+import Invitation from './invitation'
 import {
   bcrypt
 }
@@ -20,7 +20,6 @@ const User = Schema({
   },
   name: {
     tyep: String,
-    default: ''
   },
   phone: {
     type: String,
@@ -66,12 +65,9 @@ const User = Schema({
     type: Number,
     default: 0
   },
-  released: {
-    type: [PostModel.Schema],
-    default: []
-  },
-  aboutme: {
-    type: [PostModel.Schema],
+  // 发布的邀请函
+  public: {
+    type: [Invitation.Schema],
     default: []
   },
   // 权限
@@ -88,6 +84,11 @@ const User = Schema({
     type: Date,
     required: true,
     default: Date.now()
+  },
+  // 拥有的模板
+  template:{
+    type:[Invitation.Schema],
+    default:[]
   }
 }, {
   safe: true,

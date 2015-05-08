@@ -1,6 +1,9 @@
+import {
+  User
+} from '../../model'
 export default {
-  get: function*() {
-    this.state.title = this.session.user.name || 'User'
+  show: function*() {
+    const id = this.params.email;
     yield this.render('user')
   }
 }

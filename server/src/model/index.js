@@ -1,6 +1,4 @@
-const models = {
+export default {
   User: require('./user'),
-  Post: require('./post')
+  Invitation: require('./invitation')
 }
-
-export default models

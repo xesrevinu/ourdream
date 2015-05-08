@@ -16,7 +16,6 @@ const index = {
 }
 export default {
   user: require('./user'),
-  posts: require('./posts'),
-  users: require('./users'),
+  invitation:require('./invitation'),
   index: index
 }

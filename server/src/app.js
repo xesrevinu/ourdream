@@ -13,12 +13,16 @@ const server = new Server();
 server.start(function(e) {
   let {
     action, status, port
-  } = e
-  const serverInfo =`
+  } = e;
+  const serverInfo = `
     server ${action}
     -----------------------
     server status: ${status}
     server listen port:${port}
   `
   logger.info(serverInfo)
+
+  if (config.env == 'development') {
+    require('./dev')
+  }
 })
