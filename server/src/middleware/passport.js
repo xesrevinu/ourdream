@@ -12,12 +12,6 @@ from '../model'
 export default (app) => {
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(function* cleanEmptySessionPassport(next) {
-    yield * next;
-    if (Object.keys(this.session.passport).length === 0) {
-      delete this.session.passport;
-    }
-  });
   passport.serializeUser(function(user, done) {
     done(null, user._id)
   });
