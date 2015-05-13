@@ -35,7 +35,8 @@ const config = {
     output: {
         path: process.env.NODE_ENV === 'production' ? './public/dist' : './public/build',
         filename: "[name].entry.js",
-        publicPath: '/public'
+        publicPath: '/build/',
+        chunkFilename: "[id].chunk.js"
     },
     externals: {
         //don't bundle the 'react' npm package with our bundle.js
