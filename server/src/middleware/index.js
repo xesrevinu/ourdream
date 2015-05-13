@@ -1,19 +1,17 @@
 import zlib from 'zlib'
 import logger from 'koa-logger'
-import session from 'koa-session-store'
 import favicon from 'koa-favicon'
-import redisStore from 'koa-redis'
 import validate from 'koa-validate'
 import compress from 'koa-compress'
 import passport from 'koa-passport'
 import render from 'koa-swig-render'
 import bodyparser from 'koa-bodyparser'
+import session from 'koa-session-store'
 import trieRouter from 'koa-trie-router'
 import staticCache from 'koa-static-cache'
-import mongooseStore from 'koa-session-mongoose'
 import responseTime from 'koa-response-time'
+import mongooseStore from 'koa-session-mongoose'
 import webset from './webset'
-import redisClient from '../redis'
 
 export default (app) => {
   const middlewares = {
@@ -28,7 +26,7 @@ export default (app) => {
   app.use(bodyparser());
   app.use(responseTime());
   app.use(favicon(config.faviconPath));
-  if(config.env === 'development'){
+  if (config.env === 'development') {
     app.use(logger());
   }
   app.use(session({
@@ -40,17 +38,14 @@ export default (app) => {
   }));
   app.use(staticCache(config.staticPath, config.staticOpt));
   app.use(compress({
-    //flush: zlib.Z_TREES,
-    //默认压缩
-    //最好压缩 Z_BEST_COMPRESSION
-    level: zlib.Z_DEFAULT_COMPRESSION
+    level: config.env === 'development' ? zlib.Z_DEFAULT_COMPRESSION : zlib.Z_BEST_COMPRESSION
   }));
   app.use(validate());
   app.use(webset(app));
   app.use(render({
     root: config.viewPath,
     ext: 'html',
-    cache: config.env === 'development' ? 'memory' : false
+    cache: config.env === 'development' ? false : 'memory'
   }));
   app.use(middlewares.auth.isLogined);
   app.use(trieRouter(app));

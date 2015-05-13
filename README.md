@@ -7,7 +7,6 @@
 ###安装：
 * node
 * monogodb
-* redis
 
 ###安装资源：
 ```js

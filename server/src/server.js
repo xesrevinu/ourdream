@@ -10,34 +10,19 @@ class Server extends koa {
     super();
     this.app = koa();
     this.app.config = config;
-    //pm2 实现reload热重载 这些先打酱油
-    this.serverEvent = {
-      action: 'start',
-      status: 'online',
-      port: config.listenPort
-    }
   }
   start(callback) {
     this.router();
     this.server = http.createServer(this.app.callback());
-    // this.socket()
-    this.mongodb();
+    this.connection();
     this.server.listen(config.listenPort, callback(this.serverEvent));
   }
   router() {
     route(this.app)
   }
-  mongodb() {
+  connection() {
     const mongodb = mongoConnection(config.mongo.host + config.mongo.database);
-  }
-  socket(done) {
-    new ioSocket(this.server).connection()
-  }
-  static stopServer() {
-    process.on('exit', (e) => {
-      logger.warn('server is stop ')
-    })
-    process.exit('stopServer')
+    //new ioSocket(this.server).connection()
   }
 }
 

@@ -15,7 +15,6 @@ const index = {
   }
 }
 export default {
-  user: require('./user'),
   invitation:require('./invitation'),
   index: index
 }

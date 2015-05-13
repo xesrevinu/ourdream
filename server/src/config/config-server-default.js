@@ -7,7 +7,6 @@ export default {
 	debug: true,
 	listenPort: 3000,
 	keys: ['koa secret'],
-	socketPort: 3111,
 	mongo: {
 		host: "mongodb://localhost/",
 		database: "ourdream",
@@ -38,7 +37,7 @@ export default {
 	},
 	staticOpt: {
 		// 3day
-		maxAge: env !== 'development' ? 24 * 60 * 60 * 3 : null
+		maxAge: env == 'development' ? null : 24 * 60 * 60 * 3
 	},
 	memoryCapacity: 500,
 	serverPath: root + "/server/dist",
