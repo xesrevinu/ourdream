@@ -14,7 +14,8 @@ const config = {
     // 入口文件
     entry: {
         app: ['./public/js/app.js'],
-        vendors: ['react','jquery']
+        vendors: ['react','jquery'],
+        login: ['./public/js/login/login.js']
     },
     // 指定别名
     resolve: {
@@ -33,7 +34,7 @@ const config = {
     // 编译文件
     output: {
         path: process.env.NODE_ENV === 'production' ? './public/dist' : './public/build',
-        filename: "bundle.js",
+        filename: "[name].entry.js",
         publicPath: '/public'
     },
     externals: {
