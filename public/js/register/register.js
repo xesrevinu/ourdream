@@ -8,7 +8,7 @@ import {
   Col
 } from 'react-bootstrap'
 const registerUrl = '/register'
-let register = React.createClass({
+let Register = React.createClass({
   getInitialState(){
     return {
       disabled: false,
@@ -135,4 +135,4 @@ let register = React.createClass({
       )
   }
 });
-React.render(React.createElement(register),document.getElementById('register'));
+React.render(<Register />,document.getElementById('register'));

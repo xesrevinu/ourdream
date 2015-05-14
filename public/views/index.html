@@ -1,4 +1,8 @@
-{% extends 'layout.html' %} {% block title %}{{title}}{% endblock %} {% block content %}
+{% extends 'layout.html' %}
+    {% block title %}
+        {{title}}
+        {% endblock %}
+{% block content %}
 <div class="container">
     <div class="jumbotron jumbotron-max cover-pull">
         <h1>Ourdream</h1>
@@ -16,12 +20,9 @@
             </div>
         </div>
         <div class="col-lg-8  ">
-            <div class="well">
-                <div id="hi">
-                    {% include 'partials/reactLoad.html'%}
-                </div>
+            <div id="hi">
+                {% include 'partials/reactLoad.html'%}
             </div>
-
         </div>
         <div class="col-lg-4 ">
             <div class="well">
@@ -37,4 +38,8 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block loadjs%}
+    {% parent %}
+    <script src="/build/index.entry.js"></script>
 {% endblock %}

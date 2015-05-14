@@ -16,6 +16,7 @@ const config = {
         app: ['./public/js/app.js'],
         vendors: ['react','jquery','noty','react-bootstrap','classnames/dedupe'],
         login: ['./public/js/login/login.js'],
+        index:['./public/js/index/index.js'],
         register:['./public/js/register/register.js']
     },
     // 指定别名

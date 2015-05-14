@@ -9,7 +9,7 @@ import {
 } from 'react-bootstrap'
 const loginUrl = '/login';
 
-let login = React.createClass({
+let Login = React.createClass({
   getInitialState() {
     return {
       disabled: false,
@@ -130,4 +130,4 @@ let login = React.createClass({
   }
 });
 
-React.render(React.createElement(login),document.getElementById('login'));
+React.render(<Login />,document.getElementById('login'));

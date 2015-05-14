@@ -4,7 +4,8 @@ let registerAuth = $('#registerAuth'),
 import bootstrap from 'react-bootstrap'
 require('../css/base.scss');
 
-// /dialog.success('欢迎到来');
+
+// dialog.success('欢迎到来');
 
 // loginAuth.on('click', (e) => {
 //   e.preventDefault();
