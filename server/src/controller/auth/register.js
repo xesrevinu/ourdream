@@ -17,15 +17,15 @@ export default {
       console.error(e)
       return this.body = {
         success: false,
-        info: '注册失败',
-        status: 1
+        msg: '注册失败',
+        data:null
       }
     }
     if(exist>0){
       return this.body = {
         success: false,
-        info:'此email已被注册',
-        status:1
+        msg:'此email已被注册',
+        data:null
       }
     }
     try {
@@ -36,14 +36,14 @@ export default {
       console.error(e)
       return this.body = {
         success: false,
-        info:'注册失败',
-        status:1
+        msg:'注册失败',
+        data:null
       }
     }
     return this.body = {
       success: true,
-      info:'注册成功',
-      status:1
+      msg:'注册成功',
+      data:null
     }
   }
 }

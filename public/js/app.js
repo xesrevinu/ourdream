@@ -1,7 +1,7 @@
 import dialog from './dialog.js';
 let registerAuth = $('#registerAuth'),
     loginAuth = $('#loginAuth');
-
+import bootstrap from 'react-bootstrap'
 require('../css/base.scss');
 
 // /dialog.success('欢迎到来');

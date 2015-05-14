@@ -1,95 +1,131 @@
 import React from 'react'
 import dialog from '../dialog'
-
+import cset from 'classnames/dedupe'
+import {
+  Input,
+  Glyphicon,
+  Button,
+  Col
+} from 'react-bootstrap'
 const loginUrl = '/login';
 
 let login = React.createClass({
   getInitialState() {
     return {
       disabled: false,
-      subStatus:'登录',
-      emailErr:false,
-      passwordErr:false,
+      error:{
+        password:false,
+        email:false
+      },
+      success:{
+        password:false,
+        email:false
+      },
+      email:'',
+      password:'',
+      remember:'',
+      isLoading:false,
     };
   },
   send(){
-    let email = this.refs.email.getDOMNode().value.trim(),
-        pass = this.refs.password.getDOMNode().value.trim();
-    if(!email){
-      dialog.error('请输入email地址')
-    }else if(!pass){
-      dialog.error('请输入密码')
-    }
+    const self = this;
+    this.setState({
+      error: {
+        email: false,
+        password:false
+      }
+    })
     return $.ajax({
       type:'POST',
       url:loginUrl,
       data:{
-        email:email,
-        password:pass
+        email:self.state.email,
+        password:self.state.password,
+        remember:self.state.remember
       }
     })
   },
-  onSubmit(e){
+  onHandleSubmit(e){
     e.preventDefault();
+    let email = this.refs.email.getValue().trim(),
+        pass = this.refs.password.getValue().trim(),
+        remember = this.refs.remember.getChecked();
+    if(!email){
+      dialog.error('请输入email地址');
+      this.setState({
+        error:{
+          email:true
+        },
+      })
+      return
+    }else if(!pass){
+      dialog.error('请输入密码');
+      this.setState({
+        error:{
+          password:true
+        },
+      })
+      return
+    }
     this.setState({
-      //disabled:true,
-      subStatus:'登录中'
+      email: email,
+      password: pass,
+      remember: remember,
+      isLoading:true
+    }, () => {
+      this.send()
+      .then((data) => {
+        this.setState({
+          disabled:true,
+          isLoading:false,
+        });
+        dialog.success(data.msg)
+        setTimeout(()=>{
+          window.location.replace('/')
+        },1500)
+      })
+      .fail((body) => {
+        let data = body.responseJSON;
+        dialog.error(data.msg)
+        let origin = data.origin;
+        let error = {}
+        error[origin] = true;
+        this.setState({
+          error:error,
+          disabled:false,
+          isLoading:false
+        })
+      })
     });
-    this.send().then((data)=>{
-      this.setState({
-        disabled:true,
-        subStatus:'登录成功'
-      });
-      dialog.success(data.info)
-      setTimeout(()=>{
-        window.location.replace('/')
-      },1500)
-    }).fail((err)=>{
-      let data =err.responseJSON;
-      dialog.error(data.info)
-      let origin =data.origin+'Err'
-      this.setState({
-        origin:true
-      })
-      this.setState({
-        disabled:false,
-        subStatus:'登录',
-      })
-    })
   },
-  render(){
+  render() {
+    const emailGlyphicon = <Glyphicon glyph='envelope' />;
+    const passGlyphicon = <Glyphicon glyph='eye-open' />;
+    let emailClasss = cset({
+      'error': this.state.error.email,
+    }, {
+      'success': this.state.success.email
+    });
+    let passwordClasss = cset({
+      'error': this.state.error.password
+    }, {
+      'success': this.state.success.password
+    });
+    let isLoading = this.state.isLoading;
     return (
-      <form className="form-horizontal" onSubmit={this.onSubmit}>
-        <fieldset>
-          <legend>登录</legend>
-          <div className="form-group { this.state.emailErr ? 'has-error' :''}">
-              <label for="inputEmail" className="col-lg-2 control-label">邮箱</label>
-              <div className="col-lg-5">
-                <div className="input-group">
-                  <span className="input-group-addon">@</span>
-                  <input type="email" className="form-control" readonly={this.state.disabled} ref="email" name="email" placeholder="Email"></input>
-                </div>
-              </div>
-          </div>
-          <div className="form-group { this.state.passwordErr ? 'has-error' :''}">
-            <label for="inputPassword" className="col-lg-2 control-label">密码</label>
-            <div className="col-lg-5">
-              <input type="password" className="form-control" readonly={this.state.disabled} ref="password" name="password" placeholder="Password"></input>
-              <br />
-              <div className="togglebutton">
-                <label>
-                  <input type="checkbox" checked> 保持登录</input>
-                </label>
-              </div>
+       <form className='form-horizontal' onSubmit={!isLoading ? this.onHandleSubmit : null}>
+          <fieldset>
+            <legend>登录</legend>
+            <Input type='email' label='邮箱' addonBefore={emailGlyphicon} labelClassName='col-lg-2' wrapperClassName='col-lg-5' placeholder="Enter email" name="email" ref="email" bsStyle={emailClasss} />
+            <Input type='password' label='密码' addonBefore={passGlyphicon} labelClassName='col-lg-2' wrapperClassName='col-lg-5' placeholder="Enter password " name="password" ref="password" bsStyle={passwordClasss}/>
+            <Input type='checkbox' label='记住登录' wrapperClassName='col-lg-offset-2 col-xs-6' help='' name="remember" ref="remember"/>
+            <div className="form-group">
+              <Col lg={5} lgOffset={2}>
+                <Button type='submit' disabled={isLoading} > {isLoading ? '登录中' : '登录'}</Button>
+              </Col>
             </div>
-          </div>
-          <div className="form-group">
-            <div className="col-lg-5 col-lg-offset-2">
-                <button type="submit" className="btn btn-primary" disabled={this.state.disabled}>{this.state.subStatus}</button>
-            </div>
-          </div>
-        </fieldset>
-      </form>
+          </fieldset>
+        </form>
     );
   }
 });

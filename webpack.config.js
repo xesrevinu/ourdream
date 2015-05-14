@@ -14,7 +14,7 @@ const config = {
     // 入口文件
     entry: {
         app: ['./public/js/app.js'],
-        vendors: ['react','jquery','noty'],
+        vendors: ['react','jquery','noty','react-bootstrap','classnames/dedupe'],
         login: ['./public/js/login/login.js'],
         register:['./public/js/register/register.js']
     },

@@ -75,7 +75,7 @@ export default {
             theme       : 'bootstrapTheme'
         });
     },
-    error(msg='error',layout='top'){
+    error(msg='error',layout='topCenter'){
         return noty({
             text        : msg,
             type        : 'error',

@@ -9,24 +9,24 @@ export default {
     yield this.render('login')
   },
   login: function*(next) {
-    var ctx = this;
+    let self = this;
     yield * passport.authenticate('local', function*(err, user, info) {
       if (err) throw err
       if (user === false) {
-        ctx.status = 401;
-        ctx.body = {
+        self.status = 401;
+        return self.body = {
           success: true,
           origin:info.origin,
-          info:info.error.message,
-          status:0
+          msg:info.error.message,
+          data:null
         }
       } else {
-        yield ctx.login(user);
-        ctx.body = {
+        yield self.login(user);
+        return self.body = {
           success: true,
           user:user,
-          info:'登录成功',
-          status:1,
+          msg:'登录成功',
+          data:null
         }
       }
     }).call(this, next)
