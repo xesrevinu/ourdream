@@ -121,7 +121,7 @@ let Login = React.createClass({
             <Input type='checkbox' label='记住登录' wrapperClassName='col-lg-offset-2 col-xs-6' help='' name="remember" ref="remember"/>
             <div className="form-group">
               <Col lg={5} lgOffset={2}>
-                <Button type='submit' disabled={isLoading} > {isLoading ? '登录中' : '登录'}</Button>
+                <Button type="submit" bsStyle="info" disabled={isLoading} > {isLoading ? '登录中' : '登录'}</Button>
               </Col>
             </div>
           </fieldset>

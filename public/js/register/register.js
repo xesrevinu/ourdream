@@ -127,7 +127,7 @@ let Register = React.createClass({
             <Input type='password' label='确认密码' addonBefore={passGlyphicon} labelClassName='col-lg-2' wrapperClassName='col-lg-5' placeholder="Confirm password" ref="password_" name="password_" bsStyle={passwordClasss} />
             <div className="form-group">
               <Col lg={5} lgOffset={2}>
-                <Button type='submit' disabled={isLoading} > {isLoading ? '注册中' : '注册'}</Button>
+                <Button type="submit" bsStyle="info" disabled={isLoading} > {isLoading ? '注册中' : '注册'}</Button>
               </Col>
             </div>
           </fieldset>
