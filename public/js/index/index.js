@@ -13,6 +13,9 @@ let Invitation = React.createClass({
           <div className="panel-body">
             {this.props.data.description}
           </div>
+          <div >
+            <a className="btn btn-info"  href={'/invitation/'+this.props.data._id }>选择</a>
+          </div>
         </div>
         </Col>
       </div>

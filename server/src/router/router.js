@@ -7,6 +7,7 @@ export default (app) => {
     'user': './user',
     'auth': './auth',
     'find': './find',
+    'invitation':'./invitation',
     'api': './api'
   };
 

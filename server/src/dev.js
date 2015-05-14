@@ -49,6 +49,10 @@ co(function*() {
   return user[0]
 }).then((user) => {
   co(function*() {
+    let count = yield Invitation.count();
+    if(count>0){
+      return
+    }
     yield Invitation.remove().exec()
     for (let i = 0; i < template.length; i++) {
       var x = new Invitation(template[i])
