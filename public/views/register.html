@@ -9,3 +9,8 @@
     </div>
   </div>
 {% endblock %}
+
+{% block loadjs %}
+    {% parent %}
+    <script src="/build/register.entry.js"></script>
+{% endblock %}

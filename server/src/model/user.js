@@ -170,14 +170,20 @@ User.statics = {
         email: email
       }).exec();
     if (!user) {
-      throw new Error('用户不存在');
+      throw {
+        error:new Error('用户不存在'),
+        origin:'email'
+      }
     }
     // 对比密码返回Boolean
     if (
       yield user.comparePassword(password)) {
       return user;
     }
-    throw new Error('密码不正确')
+    throw {
+      error:new Error('密码不正确'),
+      origin:'password'
+    }
   }
 }
 User.methods = {

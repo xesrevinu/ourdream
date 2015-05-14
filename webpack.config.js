@@ -14,8 +14,9 @@ const config = {
     // 入口文件
     entry: {
         app: ['./public/js/app.js'],
-        vendors: ['react','jquery'],
-        login: ['./public/js/login/login.js']
+        vendors: ['react','jquery','noty'],
+        login: ['./public/js/login/login.js'],
+        register:['./public/js/register/register.js']
     },
     // 指定别名
     resolve: {
@@ -35,14 +36,15 @@ const config = {
     output: {
         path: process.env.NODE_ENV === 'production' ? './public/dist' : './public/build',
         filename: "[name].entry.js",
+        chunkFilename: "[id].chunk.js",
         publicPath: '/build/',
-        chunkFilename: "[id].chunk.js"
     },
     externals: {
         //don't bundle the 'react' npm package with our bundle.js
         //but get it from a global 'React' variable
         'react': 'React',
-        'jquery': 'jQuery'
+        'jquery': 'jQuery',
+        'noty':'noty'
     },
     module: {
         noParse: [],

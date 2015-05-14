@@ -1,36 +1,7 @@
-export default React.createClass({
+import React from 'react'
+let register = React.createClass({
   getInitialState(){
     return {}
-  },
-  onRegister(e){
-    e.preventDefault();
-    let email = React.findDOMNode(this.refs.email).value.trim()
-    let name = React.findDOMNode(this.refs.name).value.trim()
-    let password = React.findDOMNode(this.refs.password).value.trim()
-    let password_re = React.findDOMNode(this.refs.password_re).value.trim()
-    if (!email || !password || !name) {
-      return
-    }
-    if(password!==password_re){
-      return
-    }
-    $.ajax({
-      type: 'POST',
-      url: this.props.url,
-      dataType: 'json',
-      data: {
-        email: email,
-        password: password
-      }
-    }).then((data)=>{
-      if(data.status==0){
-        alert(data.error)
-        return
-      }
-      setTimeout(()=>{
-        location.replace('/');
-      },1200)
-    })
   },
   render(){
     return (
@@ -81,3 +52,4 @@ export default React.createClass({
       )
   }
 });
+React.render(React.createElement(register),document.getElementById('register'));

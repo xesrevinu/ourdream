@@ -27,7 +27,7 @@ export default (app) => {
     }).then(function(user) {
       done(null, user)
     }).catch(function(err) {
-      done(null,false,err.message)
+      done(null,false,err)
     })
   }))
 }

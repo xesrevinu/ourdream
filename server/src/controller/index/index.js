@@ -1,13 +1,14 @@
 import {
-  User
+  User,
+  Invitation
 }
-from '../../model'
+from '../../model';
 
 export default {
   index: {
     get: function*() {
-      this.state.title = '首页'
-      yield this.render('index')
+      this.state.title = '首页';
+      yield this.render('index');
     }
   }
-}
+};

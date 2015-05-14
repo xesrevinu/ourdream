@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} {{title}} - Ourdream {% endblock %}</title>
+    {% block style %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="{{webset.keywords}}" />
     <meta name="description" content="{{webset.description}}">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/build/app.css">
-
-    <!-- <link rel="stylesheet" href="/bower_components/bootstrap-material-design/dist/css/material.min.css"> -->
-    {% block style %}
     {% endblock %}
     <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -46,10 +45,9 @@
                 </ul>
             </li>
             {% else %}
-            <li><a href="#" id="loginAuth">登录</a></li>
-            <li><a href="#" id="registerAuth">注册</a></li>
+            <li><a href="/login" id="loginAuth">登录</a></li>
+            <li><a href="/register" id="registerAuth">注册</a></li>
             {% endif %}
-
         </ul>
     </div>
   </div>

@@ -16,14 +16,16 @@ export default {
         ctx.status = 401;
         ctx.body = {
           success: true,
-          info:info,
+          origin:info.origin,
+          info:info.error.message,
           status:0
         }
       } else {
         yield ctx.login(user);
         ctx.body = {
           success: true,
-          info:info||null,
+          user:user,
+          info:'登录成功',
           status:1,
         }
       }

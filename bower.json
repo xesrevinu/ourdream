@@ -19,6 +19,8 @@
   "dependencies": {
     "react": "~0.13.2",
     "bootstrap": "~3.3.4",
-    "bootstrap-material-design": "~0.3.0"
+    "bootstrap-material-design": "~0.3.0",
+    "noty": "~2.3.5",
+    "animate.css": "~3.2.6"
   }
 }
