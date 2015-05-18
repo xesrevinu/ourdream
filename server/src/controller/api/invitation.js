@@ -18,10 +18,13 @@ export default {
     console.dir(detailed)
     return this.body = detailed
   },
-  buy:function*(){
-
-  },
   save:function*(){
+    this.status=204
+  },
+  publish:function*(){
+    this.status=204
+  },
+  buy:function*(){
 
   }
 }

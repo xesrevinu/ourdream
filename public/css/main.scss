@@ -36,3 +36,19 @@
 .white{
   color:white;
 }
+.content{
+  position: relative;
+  overflow: hidden;
+  margin-top:30px;
+  margin-bottom: 30px;
+}
+.editBox{
+  width: 320px;
+  height: 568px;
+  border: 6px solid #ccc;
+  border-radius: 6px;
+}
+.edit-view{
+  background: white;
+  min-height: 360px;
+}

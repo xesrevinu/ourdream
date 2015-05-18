@@ -1,20 +1,14 @@
 {% extends 'layout.html' %}
-
 {% block content %}
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12">
-      <div id="invitation">
-        {% include 'partials/reactLoad.html'%}
-      </div>
+<div class="container">
+    <div id="invitation" data-tpl-id={{tpl._id}}>
+      {% include 'partials/reactLoad.html'%}
     </div>
-  </div>
 </div>
 {% endblock %}
 
-
 {% block loadjs %}
-    {% parent %}
-    <script src="/build/invitation.entry.js"></script>
+{% parent %}
+<script src="/build/invitation.entry.js"></script>
 {% endblock %}
 

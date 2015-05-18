@@ -118,7 +118,16 @@ let Login = React.createClass({
             <legend>登录</legend>
             <Input type='email' label='邮箱' addonBefore={emailGlyphicon} labelClassName='col-lg-2' wrapperClassName='col-lg-5' placeholder="Enter email" name="email" ref="email" bsStyle={emailClasss} />
             <Input type='password' label='密码' addonBefore={passGlyphicon} labelClassName='col-lg-2' wrapperClassName='col-lg-5' placeholder="Enter password " name="password" ref="password" bsStyle={passwordClasss}/>
-            <Input type='checkbox' label='记住登录' wrapperClassName='col-lg-offset-2 col-xs-6' help='' name="remember" ref="remember"/>
+            <div className="form-group">
+              <Col xs={6} lgOffset={2}>
+                <div className="checkbox checkbox-primary">
+                    <label>
+                      <Input type="checkbox" label=" 记住登录" help='' name="remember" ref="remember" ><span className="checkbox-material"><span className="check"></span></span>
+                      </ Input>
+                    </label>
+                </div>
+              </Col>
+            </div>
             <div className="form-group">
               <Col lg={5} lgOffset={2}>
                 <Button type="submit" bsStyle="info" disabled={isLoading} > {isLoading ? '登录中' : '登录'}</Button>
