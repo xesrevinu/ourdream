@@ -6,7 +6,11 @@ const path = require("path");
 const sassLoaders = [
     "css-loader",
     "autoprefixer-loader?browsers=last 2 version",
-    "sass-loader?includePaths[]=" + path.resolve(__dirname, "/public/css"),
+    "sass-loader?outputStyle=expanded&includePaths[]=" + (path.resolve(__dirname, "/public/css"))
+        + "&"
+        +"includePaths[]=" + (path.resolve(__dirname, "./bower_components"))
+        + "&"
+        + (path.resolve(__dirname, "./node_modules"))
 ];
 
 const config = {
