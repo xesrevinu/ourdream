@@ -3,4 +3,10 @@ export default (route, middle, ctrl) => {
     .get(ctrl.index.valid)
   route('/api/invitation')
     .get(ctrl.invitation.show)
+  route('/api/invitation/:tplId')
+    .get(ctrl.invitation.select)
+    .post(ctrl.invitation.save)
+  route('/api/invitation/:tplId/buy')
+    .get(ctrl.invitation.information)
+    .post(ctrl.invitation.buy)
 }

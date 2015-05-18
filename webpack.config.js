@@ -17,7 +17,8 @@ const config = {
         vendors: ['react','jquery','noty','react-bootstrap','classnames/dedupe'],
         login: ['./public/js/login/login.js'],
         index:['./public/js/index/index.js'],
-        register:['./public/js/register/register.js']
+        register:['./public/js/register/register.js'],
+        invitation:['./public/js/invitation/index.js']
     },
     // 指定别名
     resolve: {
