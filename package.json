@@ -6,7 +6,7 @@
   "scripts": {
     "setup": "node_modules/.bin/bower install",
     "build": "node_modules/.bin/babel  sercer/src --out-dir server/dist ",
-    "build-watch": "node_modules/.bin/babel server/src --out-dir server/dist --watch | node_modules/.bin/webpack --progress --colors -w ",
+    "watch": "node_modules/.bin/babel server/src --out-dir server/dist --watch | node_modules/.bin/webpack --progress --colors -w ",
     "dev": "node_modules/.bin/nodemon server/dist/app.js",
     "deploy": "NODE_ENV=production webpack -p"
   },
