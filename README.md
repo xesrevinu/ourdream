@@ -11,7 +11,7 @@
 ###安装资源：
 ```js
 npm install
-npm run setup
+npm run bower
 ```
 
 ###运行：
@@ -35,5 +35,5 @@ npm run dev
 部署：
 
 ```js
-npm run [undefined]
+
 ```
