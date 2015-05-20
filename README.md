@@ -23,7 +23,7 @@ npm run bower
 ####先编译
 
 ```js
-npm run build-watch
+npm run watch
 ```
 
 ####新建一个tab，运行
