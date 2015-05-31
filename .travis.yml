@@ -5,3 +5,5 @@ node_js:
 services:
   - mongodb
 sudo: false
+script: "npm run test"
+before_script: "npm run build-server"
