@@ -1,5 +1,5 @@
 # ourdream 0.0.1
-[travis-image]:https://travis-ci.org/xiaokekeT/ourdream.svg?branch=master&style=flat-square
+[travis-image]:https://img.shields.io/travis/xiaokekeT/ourdream/master.svg?style=flat-square
 [travis-url]:https://travis-ci.org/xiaokekeT/ourdream
 [![build status][travis-image]][travis-url]
 ###采用es6语法编写node.js应用
