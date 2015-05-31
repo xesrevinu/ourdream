@@ -1,41 +1,49 @@
-# ourdream 0.0.1
-[travis-image]:https://img.shields.io/travis/xiaokekeT/ourdream/master.svg?style=flat-square
-[travis-url]:https://travis-ci.org/xiaokekeT/ourdream
+# Ourdream 0.0.1
 [![build status][travis-image]][travis-url]
-###采用es6语法编写node.js应用
+##采用es6语法编写node.js应用
 
 ***
 
-###安装：
-* node
-* monogodb
+###请先安装
+ - node
+ - mongodb
 
-###安装资源：
+###安装依赖
+
 ```js
 npm install
 npm run bower
 ```
 
-###运行：
+***
 
-****
+##测试
+```js
+npm run test
+```
 
-开发环境：
-
-####先编译
+##开发：
 
 ```js
 npm run watch
 ```
 
-####新建一个tab，运行
+***新建一个tab，运行***
+
 ```js
 npm run dev
 ```
-****
 
-部署：
+open a browser input [http://localhost:3000][localhost]
+
+***
+
+##部署：
 
 ```js
-
+npm run deploy
 ```
+
+[travis-image]:https://img.shields.io/travis/xiaokekeT/ourdream/master.svg?style=flat-square
+[travis-url]:https://travis-ci.org/xiaokekeT/ourdream
+[localhost]: http://localhost:3000
