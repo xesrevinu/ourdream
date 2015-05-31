@@ -1,5 +1,5 @@
 # ourdream 0.0.1
-
+[![Build Status](https://travis-ci.org/xiaokekeT/ourdream.svg?branch=master)](https://travis-ci.org/xiaokekeT/ourdream)
 ###采用es6语法编写node.js应用
 
 ***
