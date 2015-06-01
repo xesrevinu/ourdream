@@ -5,15 +5,15 @@
   "main": "server/app.js",
   "scripts": {
     "bower": "node_modules/.bin/bower install",
-    "server-watch": "node_modules/.bin/babel --blacklist regenerator server/src --out-dir server/dist --watch ",
-    "server-build": "node_modules/.bin/babel --blacklist regenerator server/src --out-dir server/dist",
-    "client-watch": "node_modules/.bin/webpack --progress --colors -w ",
-    "client-build": "node_modules/.bin/webpack --progress --colors -p",
+    "server-watch": "node_modules/.bin/babel --blacklist regenerator ./server/src --out-dir server/dist --watch ",
+    "server-build": "node_modules/.bin/babel --blacklist regenerator ./server/src --out-dir server/dist",
+    "client-watch": "node_modules/.bin/webpack --progress --colors -w --config ./webpack.config.js",
+    "client-build": "node_modules/.bin/webpack --progress --colors -p --config ./webpack.config.js",
     "watch": "npm run server-watch | npm run client-watch",
     "build": "npm run server-build | npm run client-build",
-    "dev": "node_modules/.bin/nodemon server/dist/app.js",
-    "deploy": "npm run build && node_modules/.bin/pm2 -i -0 server/dist/app.js",
-    "test": "node_modules/.bin/mocha -c -u bdd --require should --require should-http server/test/* --bail --harmony -t 5000"
+    "dev": "node_modules/.bin/nodemon ./server/dist/app.js",
+    "deploy": "npm run build && node_modules/.bin/pm2 -i -0 ./server/dist/app.js",
+    "test": "node_modules/.bin/mocha -c -u bdd --require should --require should-http ./server/test/* --bail --harmony -t 5000"
   },
   "repository": {
     "type": "git",
@@ -54,9 +54,9 @@
     "passport-local": "^1.0.0",
     "koa-swig-render": "0.0.4",
     "koa-static-cache": "^3.1.1",
+    "react-bootstrap": "^0.22.6",
     "koa-session-store": "^1.1.1",
     "koa-response-time": "^1.0.2",
-    "react-bootstrap": "^0.22.6",
     "koa-session-mongoose": "^0.5.0"
   },
   "devDependencies": {
