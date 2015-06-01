@@ -13,4 +13,4 @@ script: "npm run test"
 install:
   - npm install
   - npm run bower
-before_script: "npm run server-server"
+before_script: "npm run server-build"
