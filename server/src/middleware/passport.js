@@ -16,7 +16,9 @@ export default (app) => {
     done(null, user._id)
   });
   passport.deserializeUser(function(id, done) {
-    User.findById(id,'-password',done)
+    User.findById(id,{
+      password:0
+    },done)
   });
   passport.use(new LocalStrategy({
     usernameField: 'email',

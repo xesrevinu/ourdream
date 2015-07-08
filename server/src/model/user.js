@@ -1,24 +1,17 @@
 import co from 'co'
 import mongoose from 'mongoose'
-import Invitation from './invitation'
 import {
   bcrypt
-}
-from '../utils'
+} from '../utils'
 const Schema = mongoose.Schema;
-/**
- * 用户模型
- * @type {Schema}
- * email 必须
- * password 必须
- */
+
 const User = Schema({
   email: {
     type: String,
     required: true,
     unique: true
   },
-  name: {
+  nicename: {
     tyep: String,
   },
   phone: {
@@ -37,10 +30,6 @@ const User = Schema({
     type: String,
     default: 'man'
   },
-  company: {
-    type: String,
-    default: ''
-  },
   description: {
     type: String,
     default: ''
@@ -57,18 +46,13 @@ const User = Schema({
     type: String,
     default: ''
   },
-  cover: {
+  head: {
     type: String,
     required: false
   },
   level: {
     type: Number,
     default: 0
-  },
-  // 发布的邀请函
-  public: {
-    type: [Invitation.Schema],
-    default: []
   },
   // 权限
   role: {
@@ -84,11 +68,6 @@ const User = Schema({
     type: Date,
     required: true,
     default: Date.now()
-  },
-  // 拥有的模板
-  template:{
-    type:[Invitation.Schema],
-    default:[]
   }
 }, {
   safe: true,
@@ -115,85 +94,81 @@ User.pre('save', function(done) {
     }
   }).call(this).then(done);
 });
-
-User.statics = {
-  /**
-   * 查找用户是否存在
-   * @param  {String} email 邮箱地址
-   * @return {Number}       用户数
-   */
-  exist: function(email) {
-    return this.count({
+/**
+ * 查找用户是否存在
+ * @param  {String} email 邮箱地址
+ * @return {Number}       用户数
+ */
+User.statics.exist = function(email) {
+  return this.count({
+    email: email
+  }).exec()
+}
+/**
+  * 根据email查找用户资料
+  * @param  {String} email 邮箱地址
+  * @return {Object}       用户资料
+  */
+User.statics.findUser = function(email) {
+  return this.findOne({
+    email: email
+  }, {
+    /*salt:0,
+    hash:0,
+    */
+    __v:0
+  }).exec()
+}
+/**
+ * 查找用户验证信息
+ * @param  {String} email 邮箱地址
+ * @return {Object}       验证信息
+ */
+User.statics.findAuth = function(email){
+  return this.findOne({
+    email: email
+  }, {
+    _id: 1,
+    password: 1,
+    email: 1,
+    level: 1,
+    active: 1,
+  }).exec()
+}
+/**
+ * 登录验证
+ * @param {String} email         邮箱地址
+ * @param {String} password      密码
+ * @yield {[type]} [description]
+ */
+User.statics.verifyPassword = function *(email, password) {
+  const user =
+    yield this.findOne({
       email: email
-    }).exec()
-  },
-  /**
-   * 根据email查找用户资料
-   * @param  {String} email 邮箱地址
-   * @return {Object}       用户资料
-   */
-  findUser: function(email) {
-    return this.findOne({
-      email: email
-    }, {
-      /*salt:0,
-      hash:0,
-      */
-      __v:0
-    }).exec()
-  },
-  /**
-   * 查找用户验证信息
-   * @param  {String} email 邮箱地址
-   * @return {Object}       验证信息
-   */
-  findAuth: function(email) {
-    return this.findOne({
-      email: email
-    }, {
-      _id: 1,
-      password: 1,
-      email: 1,
-      level: 1,
-      active: 1,
-    }).exec()
-  },
-  /**
-   * 登录验证
-   * @param {String} email         邮箱地址
-   * @param {String} password      密码
-   * @yield {[type]} [description]
-   */
-  verifyPassword: function*(email, password) {
-    const user =
-      yield this.findOne({
-        email: email
-      }).exec();
-    if (!user) {
-      throw {
-        error:new Error('用户不存在'),
-        origin:'email'
-      }
-    }
-    // 对比密码返回Boolean
-    if (
-      yield user.comparePassword(password)) {
-      return user;
-    }
+    }).exec();
+  if (!user) {
     throw {
-      error:new Error('密码不正确'),
-      origin:'password'
+      error:new Error('用户不存在'),
+      origin:'email'
     }
   }
-}
-User.methods = {
-  /**
-   * 对比密码
-   * @param  {String} candidatePassword  被验证密码
-   * @return {Boolean}                   是否相同
-   */
-  comparePassword: function(candidatePassword) {
-    return bcrypt.compare(candidatePassword, this.password);
+  // 对比密码返回Boolean
+  if (
+    yield user.comparePassword(password)) {
+    return user;
+  }
+  throw {
+    error:new Error('密码不正确'),
+    origin:'password'
   }
 }
+/**
+ * 对比密码
+ * @param  {String} candidatePassword  被验证密码
+ * @return {Boolean}                   是否相同
+ */
+User.methods.comparePassword = function(candidatePassword){
+  return bcrypt.compare(candidatePassword, this.password);
+}
+
 export default mongoose.model('Users', User)

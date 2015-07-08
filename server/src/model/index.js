@@ -1,4 +1,5 @@
 export default {
-  User: require('./user'),
-  Invitation: require('./invitation')
+  User:require('./user'),
+  Team:require('./team'),
+  NewsModel:require('./news')
 }

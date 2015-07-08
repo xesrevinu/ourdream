@@ -1,12 +1,11 @@
-'use strict'
 import _ from 'lodash'
-import default_config from './config-server-default'
+import defaultConfig from './config-default'
 const env = process.env.NODE_ENV || 'development'
 
-let config = default_config;
+let config = defaultConfig
 config.env = env
 
 if (env !== 'development') {
-  config = _.merge(default_config, require('./config-server-' + env));
+  config = _.merge(defaultConfig, require('./config-' + env))
 }
 export default config

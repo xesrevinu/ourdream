@@ -5,51 +5,9 @@
     <title>{% block title %} {{title}} - Ourdream {% endblock %}</title>
     {% block style %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="{{webset.keywords}}" />
-    <meta name="description" content="{{webset.description}}">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="/bower_components/bootstrap-material-design/dist/css/material.min.css">
     <link rel="stylesheet" href="/bower_components/animate.css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/build/app.css">
     {% endblock %}
 </head>
 <body>
-<div class="main-navigation">
-  <div class="navbar  navbar-default">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-warning-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Ourdream</a>
-    </div>
-    <div class="navbar-collapse collapse navbar-warning-collapse">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="/">首页</a></li>
-            <li><a href="/">模板</a></li>
-            <li><a href="/">案例</a></li>
-        </ul>
-        <!-- <form class="navbar-form navbar-left">
-            <input type="text" class="form-control col-lg-8" placeholder="Search">
-        </form> -->
-        <ul class="nav navbar-nav navbar-right">
-            {% if user %}
-            <li class="dropdown">
-                <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.email }} <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="javascript:void(0)">个人中心</a></li>
-                    <li><a href="javascript:void(0)">设置中心</a></li>
-                    <li><a href="javascript:void(0)">帮助</a></li>
-                    <li class="divider"></li>
-                    <li><a href="/logout">退出</a></li>
-                </ul>
-            </li>
-            {% else %}
-            <li><a href="/login" id="loginAuth">登录</a></li>
-            <li><a href="/register" id="registerAuth">注册</a></li>
-            {% endif %}
-        </ul>
-    </div>
-  </div>
-</div>
