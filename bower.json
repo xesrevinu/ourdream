@@ -20,6 +20,6 @@
     "bootstrap": "~3.3.4",
     "bootstrap-material-design": "~0.3.0",
     "animate.css": "~3.2.6",
-    "jquery": "~2.1.4",
+    "jquery": "~2.1.4"
   }
 }
