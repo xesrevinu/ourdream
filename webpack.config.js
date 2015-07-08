@@ -4,26 +4,23 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require("path");
 
 const sassLoaders = [
-    "css-loader",
+    "css-loader?sourceMap",
     "autoprefixer-loader?browsers=last 2 version",
-    "sass-loader?outputStyle=expanded&includePaths[]=" + (path.resolve(__dirname, "/public/css"))
+    "sass-loader?outputStyle=expanded&sourceMap&includePaths[]=" + (path.resolve(__dirname, "/public/css"))
         + "&"
         +"includePaths[]=" + (path.resolve(__dirname, "./bower_components"))
         + "&"
-        + (path.resolve(__dirname, "./node_modules"))
+        + (path.resolve(__dirname, "./node_modules")),
 ];
 
 const config = {
     debug: process.env.NODE_ENV === 'production' ? false : true,
     // 入口文件
     entry: {
-        app: ['./public/js/app.js'],
-        vendors: ['react','jquery','noty','react-bootstrap','classnames/dedupe'],
-        login: ['./public/js/login/login.js'],
-        index:['./public/js/index/index.js'],
-        register:['./public/js/register/register.js'],
-        invitation:['./public/js/invitation/index.js']
+        app: ['./public/js/main.js'],
+        vendors: ['jwt-decode', 'reqwest']
     },
+    devtool: 'inline-source-map',
     // 指定别名
     resolve: {
         alias: {},
@@ -49,15 +46,20 @@ const config = {
         //don't bundle the 'react' npm package with our bundle.js
         //but get it from a global 'React' variable
         'react': 'React',
-        'jquery': 'jQuery',
-        'noty':'noty'
+        'react-router': 'ReactRouter',
+        'noty':'noty',
+        'reflux':'Reflux'
     },
     module: {
         noParse: [],
         loaders: [{
             test: /\.js?$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader'
+            exclude: /(node_modules|bower_components)/,
+            loader: 'babel-loader',
+            query: {
+                optional: ['runtime'],
+                stage: 0
+            }
         }, {
             test: /\.css$/,
             loader: 'style!css!autoprefixer'

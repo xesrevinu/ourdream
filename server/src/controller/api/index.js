@@ -1,20 +1,12 @@
-import {
-  User
-} from '../../model'
-const index = {
-  valid: function*() {
-    if (this.passport.user) {
-      let user = yield User.findUser(this.passport.user.email)
-      return this.body = user
-    }
-    return this.body = {
-      success:true,
-      info:'未登录',
-      status:0
-    }
-  }
-}
-export default {
-  invitation:require('./invitation'),
-  index: index
+/**
+ * Created by xiaokekeT on 15/6/14.
+ */
+import team from './teams/index'
+import auth from './auth/index'
+import news from './news/index'
+
+export {
+	team,
+	auth,
+	news
 }
