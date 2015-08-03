@@ -30,16 +30,17 @@ export default (app) => {
 	app.use(bodyparser())
 	app.use(responseTime())
 	app.use(favicon(config.favicon))
+	console.log(config.env)
 	if (config.env === 'development') {
 		app.use(logger())
 	}
 	app.use(cors())
-	app.use(session({
+	/*app.use(session({
 		store: mongooseStore.create(),
 		cookie: config.session.cookie,
 		resave: true,
 		saveUninitialized: true
-	}))
+	}))*/
 	app.use(staticCache(config.static.path, config.static.options))
 	app.use(compress({
 		level: zlib[config.compress.level]

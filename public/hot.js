@@ -4,8 +4,13 @@ var config = require('./webpack.dev.config');
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
+  quiet: !true,
+  noInfo: true,
   hot: true,
+	inline: true,
+	lazy: false,
   historyApiFallback: true,
+	headers: {"Access-Control-Allow-Origin": "*"},
   stats: {
     colors: true
   }

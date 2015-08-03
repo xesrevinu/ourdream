@@ -1,15 +1,15 @@
-process.env.NODE_ENV = 'development';
 import tracer from 'tracer'
 import Server from './server'
 import config from './config/config'
 
-const logger = tracer.console(config.cliColor)
-const server = new Server()
+let logger = global.logger = tracer.console(config.cliColor)
+let server = new Server()
 
-server.start(function(e) {
-  const serverInfo = '\n server start lisent 3000 \n'
+server.listen(config.listenPort,function() {
+  const serverInfo = `\n server start lisent ${config.listenPort} \n`
   logger.info(serverInfo)
   if (config.env === 'development') {
     require('./dev')
   }
 })
+

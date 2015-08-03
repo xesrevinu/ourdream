@@ -6,9 +6,6 @@
 
 node_modules
 public/bower_components
-server/dist
-public/build
-public/dist
-
+public/dev
 dump.rdb
 

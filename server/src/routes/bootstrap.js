@@ -1,50 +1,36 @@
 import fs from 'fs'
 import _ from 'lodash'
 import path from 'path'
+import requireDir from 'require-dir'
+import koaRouter from 'koa-router'
 import middleware from '../middleware/index'
 
-//const spaRoutes = ['/register','/about','/login']
-const ctrlPath = path.resolve(__dirname, '../controller')
-const ctrlFile = fs.readdirSync(ctrlPath)
-let ctrls = {}
-ctrlFile.forEach(name => {
-	let stats = fs.statSync(`${ctrlPath}/${name}`)
-	if (stats.isDirectory()) {
-		ctrls[name] = `../controller/${name}`
-	}
-})
-
 export default (app) => {
-	const middle = middleware(app)
+  const middle = middleware(app)
+  const ctrls = requireDir(app.config.ctrlPath)
+  const apis = requireDir(app.config.apiPath, {
+    recurse: true
+  })
 
-	let publishRouter = (file, main = 'index') => {
-		let ctrl = require(`${ctrls[file]}/${main}`)
-		return require(`./${file}`)(app, ctrl, middle)
-	}
+  // index router
+  let pubRouter = (rName, inject) => {
+    let Router = new koaRouter()
+    let routes = require(rName)(Router, inject, middle)
+    app.use(routes.routes())
+  }
 
-	//发布路由
-	publishRouter('api')
-	publishRouter('static')
+  pubRouter('./ctrl',ctrls)
+  pubRouter('./api',apis)
 
-	//spa router
-	//app.use(function*(next) {
-	//	let spaPath = spaRoutes.indexOf(this.url)
-	//	if(spaPath==-1){
-	//		yield next
-	//	}
-	//	let Redirectrouting = spaRoutes[spaPath]
-	//	return this.redirect(`/#${Redirectrouting}`)
-	//});
-
-	// 404 Error handle
-	app.use(function*(next) {
-		if (app.env === 'development') {
-			this.status = 500
-			this.body = `<h2 style="text-align:centermargin-top:20%">未定义的路由=>${this.url}</h2>`
-			return
-		}
-		this.type = 'text/html'
-		this.status = 404
-		yield this.render('404')
-	})
+  // 404 Error handle
+  app.use(function*(next) {
+    if (app.env === 'development') {
+      this.status = 500
+      this.body = `<h2 style="text-align:centermargin-top:20%">未定义的路由=>${this.url}</h2>`
+      return
+    }
+    this.type = 'text/html'
+    this.status = 404
+    yield this.render('404')
+  })
 }

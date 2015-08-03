@@ -43,7 +43,8 @@ export default {
     }
   },
   getTeam: function*(teamId) {
-    return Team.findOne(teamId).exec()
+    let data = yield Team.findById(teamId).exec()
+    return data
   },
   createTeam: function*(body) {
     body.creator = "554c263adf78ff141dd84693"
@@ -60,12 +61,12 @@ export default {
     let query = {
       "_id": teamId
     }
-    return Team.update(query, diff).exec()
+    return yield Team.update(query, diff).exec()
   },
   deleteTeam: function*(teamId) {
     let query = {
       "_id": teamId
     }
-    return Team.remove(query).exec()
+    return yield Team.remove(query).exec()
   }
 }

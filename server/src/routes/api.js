@@ -1,37 +1,43 @@
-export default (app, api, middle) => {
+export default (router, api, middle) => {
 
-	//获取token
-	app.get('/api/token', api.auth.getToken)
+  router.use(function*(next) {
+      this.type = "json"
+      yield next
+  })
+	
+  /*
+   * Team 团队API
+   *
+   * */
+  //获取team列表
+  router.get('/api/teams', api.teams.index.get)
+    //获取team详细
+  router.get('/api/teams/:id', api.teams.index.show)
+    //创建team
+  router.post('/api/teams', api.teams.index.post)
+    //更新team
+  router.put('/api/teams/:id', api.teams.index.put)
+    //删除team
+  router.delete('/api/teams/:id', api.teams.index.delete)
 
-	/*
-	 * Team 团队API
-	 *
-	 * */
-	//获取team列表
-	app.get('/api/teams', api.team.get)
-	//获取team详细
-	app.get('/api/teams/:id', api.team.show)
-	//创建team
-	app.post('/api/teams', api.team.post)
-	//更新team
-	app.put('/api/teams/:id', api.team.put)
-	//删除team
-	app.delete('/api/teams/:id', api.team.delete)
+  /**
+   *  News 消息API
+   **/
+  router.get('/api/news', api.news.index.get)
+  router.get('/api/news/:id',api.news.index.show)
+  router.post('/api/news',api.news.index.post)
+  router.put('/api/news/:id',api.news.index.put)
+  router.delete('/api/news/:id',api.news.index.delete)
 
-	/**
-	 *  News 消息API
-	 */
-	app.get('/api/news',api.news.get)
-	app.post('/api/news',api.news.post)
+  /**
+   * 验证API
+   *
+   **/
+  //登录
+   router.post('/api/login', api.auth.index.login.post)
 
-	/**
-	 * 验证API
-	 *
-	 * */
-	//登录
-	app.route('/api/auth/login')
-		.post(api.auth.login.post)
-	//注册
-	app.route('/api/auth/register')
-		.post(api.auth.register.post)
+  //注册
+   router.post('/api/register', api.auth.index.register.post)
+
+  return router
 }

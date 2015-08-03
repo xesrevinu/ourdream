@@ -41,12 +41,7 @@ const News = Schema({
   }
 }, {
   safe: true,
-  collection: 'news',
-  toJSON: {
-    transform: function(doc, ret, options) {
-
-    }
-  }
+  collection: 'news'
 })
 
 

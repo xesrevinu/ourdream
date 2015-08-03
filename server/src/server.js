@@ -1,37 +1,25 @@
 import koa from 'koa'
 import http from 'http'
+import co from 'co'
 import config from './config/config'
 import bootstrap from './routes/bootstrap'
 import ioSocket from './socket/conection'
 import mongoConnection from './model/connection'
 
-class Server extends koa {
-	constructor() {
-		super()
-		this.app = koa()
-		this.app.config = config
-		global.app = {}
-		global.app.service = {}
-		global.app.model = {}
-	}
+global.app = {}
+global.app.service = {}
+global.app.model = {}
 
-	start(callback) {
-		this.bootstrap()
-		this.server = http.createServer(this.app.callback())
-		this.server.listen(config.listenPort, callback)
-	}
-	bootstrap() {
-		this.load()
-		Server.connection()
-		bootstrap(this.app)
-	}
-	load(){
-		global.app.model = require('./model/index')
-		global.app.service = require('./service/index')
-	}
-	static connection() {
-		mongoConnection(config.mongo.host + config.mongo.database)
-	}
+let app = koa()
+
+export default ()=>{
+	app.config = config
+
+	global.app.model = require('./model/index')
+	global.app.service = require('./service/index')
+
+	mongoConnection(config.mongo.host + config.mongo.database)
+	bootstrap(app)
+
+	return app
 }
-
-export default Server

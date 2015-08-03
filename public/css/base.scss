@@ -1,5 +1,6 @@
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import 'config/colors';
-
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
 html,body{
   color: #444;
   background: #f7f7f7;
@@ -11,29 +12,6 @@ a{
     color:#6E6E6E;
   }
 }
-.well{
-  border:0px;
-  border-radius: 0;
-  background: white;
-}
 .navbar{
   margin-bottom: 0;
-}
-.navbar-default{
-  background: white;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.31);
-  border-radius: 0;
-}
-.navbar-right{
-  margin-right:200px;
-}
-.navbar-header{
-  margin-left: 200px;
-  letter-spacing: 1.3px;
-}
-.navbar-default .navbar-nav > li > a{
-  color: #000000 !important;
-  font-size: 14px;
 }

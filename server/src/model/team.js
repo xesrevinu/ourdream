@@ -63,12 +63,7 @@ const Team = Schema({
 	}
 }, {
 	safe: true,
-	collection: 'teams',
-	toJSON: {
-		transform: function(doc, ret, options) {
-
-		}
-	},
+	collection: 'teams'
 })
 
 Team.pre('save', function(done) {
