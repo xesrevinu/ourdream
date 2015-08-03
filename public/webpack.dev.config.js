@@ -4,11 +4,11 @@ var scssLoad = [
 	'style',
 	'css',
 	'autoprefixer?browsers=last 2 version',
-	'sass?outputStyle=expanded&sourceMap&includePaths[]='+(path.resolve(__dirname, './node_modules'))
+	'sass?outputStyle=expanded&sourceMap&includePaths[]=' + (path.resolve(__dirname, './node_modules'))
 ]
 module.exports = {
 	target: 'web',
-	context:path.resolve(__dirname,'.'),
+	context: path.resolve(__dirname, '.'),
 	entry: [
 		'webpack-dev-server/client?http://localhost:4000',
 		'webpack/hot/only-dev-server',

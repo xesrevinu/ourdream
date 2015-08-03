@@ -17,9 +17,9 @@ let Root = window.Root = document.getElementById('root')
 let reducer = combineReducers(reducers)
 const store = applyMiddleware(middleware)(createStore)(reducer);
 
-universalRouter(location, history, store).then(({component})=>{
+universalRouter(location, history, store).then(({component})=> {
 	React.render(component, Root)
-},(error)=>{
+}, (error)=> {
 	console.error(error)
 })
 

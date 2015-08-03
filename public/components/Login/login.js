@@ -9,13 +9,13 @@ import * as AuthActions from '../../actions/authActions'
 
 class Login extends Component {
 	static propTypes = {
-		auth:Types.object.isRequired,
-		authActions:Types.object.isRequired
+		auth: Types.object.isRequired,
+		authActions: Types.object.isRequired
 	}
 	static contextTypes = {
-		router:Types.object.isRequired
+		router: Types.object.isRequired
 	}
-	render(){
+	render() {
 		let { login, logout } = this.props.authActions
 		return (
 			<div>
@@ -28,14 +28,14 @@ class Login extends Component {
 }
 
 @connect(state=>({
-	auth:state.auth
+	auth: state.auth
 }))
-class LoginContainer extends Component{
+class LoginContainer extends Component {
 	static propTypes = {
-		auth:Types.object.isRequired,
-		dispatch:Types.func.isRequired
+		auth: Types.object.isRequired,
+		dispatch: Types.func.isRequired
 	}
-	render(){
+	render() {
 		let { auth, dispatch } = this.props
 		return <Login auth={auth} authActions={bindActionCreators(AuthActions,dispatch)} {...this.props}></Login>
 	}

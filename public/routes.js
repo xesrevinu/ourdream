@@ -14,4 +14,5 @@ let routes = (
 		<Route path="*" component={Notfound}></Route>
 	</Route>
 )
+
 export default routes

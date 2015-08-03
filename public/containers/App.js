@@ -7,11 +7,11 @@ import * as stores from '../stores';
 const redux = createRedux(stores);
 
 export default class App {
-  render() {
-    return (
-      <Provider redux={redux}>
-        {() => <CounterApp />}
-      </Provider>
-    );
-  }
+	render() {
+		return (
+			<Provider redux={redux}>
+				{() => <CounterApp />}
+			</Provider>
+		);
+	}
 }

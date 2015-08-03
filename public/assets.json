@@ -1,1 +1,8 @@
-{"main":{"js":"/dist/js/main-be7fb4ee6cf3a5c67156.js","css":"/dist/css/main-be7fb4ee6cf3a5c67156.css","jsMap":"/dist/js/main-be7fb4ee6cf3a5c67156.js.map","cssMap":"/dist/css/main-be7fb4ee6cf3a5c67156.css.map"}}
+{
+  "main": {
+    "js": "/dist/js/main-be7fb4ee6cf3a5c67156.js",
+    "css": "/dist/css/main-be7fb4ee6cf3a5c67156.css",
+    "jsMap": "/dist/js/main-be7fb4ee6cf3a5c67156.js.map",
+    "cssMap": "/dist/css/main-be7fb4ee6cf3a5c67156.css.map"
+  }
+}

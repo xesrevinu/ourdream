@@ -1,5 +1,5 @@
 <html>
-  <head>
+<head>
     <title>Redux Counter Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/bower_components/animate.css/animate.min.css">
@@ -8,14 +8,13 @@
     {% else %}
     <link rel="stylesheet" href="/dist/css/app.css">
     {% endif %}
-  </head>
-  <body>
-    <div id="root" class="container">
-    </div>
-  </body>
-  {% if assets.prod %}
-  <script src="{{ assets.main.js }}"></script>
-  {% else %}
-  <script src="/dist/dev/bundle.js"></script>
-  {% endif %}
+</head>
+<body>
+    <div id="root" class="container"></div>
+    {% if assets.prod %}
+    <script src="{{ assets.main.js }}"></script>
+    {% else %}
+    <script src="/dist/dev/bundle.js"></script>
+    {% endif %}
+</body>
 </html>

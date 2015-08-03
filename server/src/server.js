@@ -12,7 +12,7 @@ global.app.model = {}
 
 let app = koa()
 
-export default ()=>{
+export default ()=> {
 	app.config = config
 
 	global.app.model = require('./model/index')

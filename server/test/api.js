@@ -13,21 +13,22 @@ describe('Teams Api', function () {
 	it('Get /api/teams/:id in path ,获取id团队信息', function (done) {
 		var id = '558f7bfff317d8856068f526'
 		request(app.listen())
-			.get('/api/teams/'+id)
-			.end(function(err,data){
-				if(err){}
+			.get('/api/teams/' + id)
+			.end(function (err, data) {
+				if (err) {
+				}
 				data.body.data["_id"].should.be.exactly(id)
 				done()
 			});
 	})
-	it('Post /api/teams in path ,创建一个团队',function(done){
+	it('Post /api/teams in path ,创建一个团队', function (done) {
 		var body = {
-			name:'Test ',
-			description:'test team'
+			name: 'Test ',
+			description: 'test team'
 		}
 		request(app.listen())
-		.post('/api/teams')
-		.send(body)
-		.end(done)
+			.post('/api/teams')
+			.send(body)
+			.end(done)
 	})
 });
