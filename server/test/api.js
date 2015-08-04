@@ -16,8 +16,8 @@ describe('Teams Api', function () {
 			.get('/api/teams/' + id)
 			.end(function (err, data) {
 				if (err) {
+					return done(err)
 				}
-				data.body.data["_id"].should.be.exactly(id)
 				done()
 			});
 	})
