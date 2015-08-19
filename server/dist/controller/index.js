@@ -4,10 +4,12 @@
 
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
 var index = {
 	get: function* get() {
-		yield this.render('_index');
+		yield this.render('index');
 	}
 };
 

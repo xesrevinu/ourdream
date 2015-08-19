@@ -1,49 +1,65 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
 
-exports['default'] = function (router, api, middle) {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-  router.use(function* (next) {
-    this.type = 'json';
-    yield next;
-  });
+var _koaJwt = require('koa-jwt');
 
-  /*
-   * Team 团队API
-   *
-   * */
-  //获取team列表
-  router.get('/api/teams', api.teams.index.get);
-  //获取team详细
-  router.get('/api/teams/:id', api.teams.index.show);
-  //创建team
-  router.post('/api/teams', api.teams.index.post);
-  //更新team
-  router.put('/api/teams/:id', api.teams.index.put);
-  //删除team
-  router['delete']('/api/teams/:id', api.teams.index['delete']);
+var _koaJwt2 = _interopRequireDefault(_koaJwt);
 
-  /**
-   *  News 消息API
-   **/
-  router.get('/api/news', api.news.index.get);
-  router.get('/api/news/:id', api.news.index.show);
-  router.post('/api/news', api.news.index.post);
-  router.put('/api/news/:id', api.news.index.put);
-  router['delete']('/api/news/:id', api.news.index['delete']);
+exports['default'] = function (router, api, middle, app) {
 
-  /**
-   * 验证API
-   *
-   **/
-  //登录
-  router.post('/api/login', api.auth.index.login.post);
+	router.use(function* (next) {
+		this.type = "json";
+		yield next;
+	});
 
-  //注册
-  router.post('/api/register', api.auth.index.register.post);
+	/*
+  * Team 团队API
+  *
+  * */
+	//获取team列表
+	router.get('/api/teams', api.teams.index.get);
+	//获取team详细
+	router.get('/api/teams/:id', api.teams.index.show);
+	//router.use('/api/teams/',jwt({secret:'AAABBB',audience: 'http://myapi/protected',issuer: 'http://issuer'}) )
+	//创建team
+	router.post('/api/teams', api.teams.index.post);
+	//更新team
+	router.put('/api/teams/:id', api.teams.index.put);
+	//删除team
+	router['delete']('/api/teams/:id', api.teams.index['delete']);
 
-  return router;
+	/**
+  *  News 消息API
+  **/
+	router.get('/api/news', api.news.index.get);
+	router.get('/api/news/:id', api.news.index.show);
+	router.post('/api/news', api.news.index.post);
+	router.put('/api/news/:id', api.news.index.put);
+	router['delete']('/api/news/:id', api.news.index['delete']);
+
+	/**
+  * Message
+  **/
+	router.get('/api/message/:id', api.message.index.show);
+
+	/**
+  * 验证API
+  *
+  **/
+	//登录
+	router.post('/api/login', api.auth.index.login.post);
+	//验证jwt
+	router.get('/api/valid', middle.auth.verifyToken, api.auth.index.token.valid);
+	router.get('/api/logout', api.auth.index.logout);
+	//注册
+	router.post('/api/register', api.auth.index.register.post);
+
+	return router;
 };
 
 module.exports = exports['default'];

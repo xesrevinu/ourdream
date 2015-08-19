@@ -30,7 +30,7 @@ export default {
   },
   view: {
     ext: 'html',
-    root: root + "/public/",
+    root: root + "/public/dist/",
     cache: false
   },
   static: {
@@ -48,7 +48,6 @@ export default {
 	ctrlPath: root + '/server/dist/controller',
 	apiPath:root + '/server/dist/api',
   favicon: root + "/public/favicon.ico",
-  assets: require('../../../public/assets.json'),
   cliColor: {
     filters: {
       log: clc.black.bgWhite,

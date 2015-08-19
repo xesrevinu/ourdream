@@ -1,12 +1,10 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _co = require('co');
-
-var _co2 = _interopRequireDefault(_co);
 
 var _koaPassport = require('koa-passport');
 
@@ -31,7 +29,7 @@ exports['default'] = function (app) {
     usernameField: 'email',
     passwordField: 'password'
   }, function (username, password, done) {
-    _co2['default'](function* () {
+    co(function* () {
       return yield _model.User.verifyPassword(username, password);
     }).then(function (user) {
       done(null, user);

@@ -27,7 +27,7 @@ export default {
   },
   view: {
     ext: 'html',
-    root:root + "/public/views/",
+    root:root + "/public/dist/",
     cache:false
   },
   static: {
@@ -41,6 +41,6 @@ export default {
     level:"Z_DEFAULT_COMPRESSION"
   },
   serverPath: root + "/server/dist",
-  publicPath: root + "/public",
-  favicon: root + "/public/favicon.ico"
+  publicPath: root + "/public/",
+  favicon: root + "/public/dist/favicon.ico"
 };

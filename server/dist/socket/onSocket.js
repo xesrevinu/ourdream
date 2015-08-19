@@ -1,6 +1,8 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -14,8 +16,8 @@ var _message2 = _interopRequireDefault(_message);
 
 exports['default'] = function (socket) {
   socket.on('disconnect', function () {});
-  _user2['default'](socket);
-  _message2['default'](socket);
+  (0, _user2['default'])(socket);
+  (0, _message2['default'])(socket);
 };
 
 module.exports = exports['default'];

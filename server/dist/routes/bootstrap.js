@@ -1,6 +1,8 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -29,21 +31,21 @@ var _middlewareIndex = require('../middleware/index');
 var _middlewareIndex2 = _interopRequireDefault(_middlewareIndex);
 
 exports['default'] = function (app) {
-  var middle = _middlewareIndex2['default'](app);
-  var ctrls = _requireDir2['default'](app.config.ctrlPath);
-  var apis = _requireDir2['default'](app.config.apiPath, {
+  var middle = (0, _middlewareIndex2['default'])(app);
+  var ctrls = (0, _requireDir2['default'])(app.config.ctrlPath);
+  var apis = (0, _requireDir2['default'])(app.config.apiPath, {
     recurse: true
   });
 
   // index router
   var pubRouter = function pubRouter(rName, inject) {
     var Router = new _koaRouter2['default']();
-    var routes = require(rName)(Router, inject, middle);
+    var routes = require(rName)(Router, inject, middle, app);
     app.use(routes.routes());
   };
 
-  pubRouter('./ctrl', ctrls);
   pubRouter('./api', apis);
+  pubRouter('./ctrl', ctrls);
 
   // 404 Error handle
   app.use(function* (next) {

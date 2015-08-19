@@ -1,8 +1,5 @@
 {
   "stage": 0,
-  "loose": [
-    "all"
-  ],
   "blacklist": [
     "regenerator"
   ],

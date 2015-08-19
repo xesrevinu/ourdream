@@ -1,11 +1,13 @@
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var root = process.cwd();
 exports["default"] = {
   debug: true,
   listenPort: 3000,
-  keys: ["koa secret secret"],
+  keys: ['koa secret secret'],
   mongo: {
     host: "mongodb://localhost/",
     database: "ourdream",
@@ -21,7 +23,7 @@ exports["default"] = {
   session: {
     //defer: true,
     cookie: {
-      path: "/",
+      path: '/',
       httpOnly: true,
       maxage: 24 * 60 * 60 * 3,
       rewrite: true,
@@ -29,8 +31,8 @@ exports["default"] = {
     }
   },
   view: {
-    ext: "html",
-    root: root + "/public/views/",
+    ext: 'html',
+    root: root + "/public/dist/",
     cache: false
   },
   "static": {
@@ -44,7 +46,7 @@ exports["default"] = {
     level: "Z_DEFAULT_COMPRESSION"
   },
   serverPath: root + "/server/dist",
-  publicPath: root + "/public",
-  favicon: root + "/public/favicon.ico"
+  publicPath: root + "/public/",
+  favicon: root + "/public/dist/favicon.ico"
 };
 module.exports = exports["default"];

@@ -15,12 +15,12 @@ export default (app) => {
   // index router
   let pubRouter = (rName, inject) => {
     let Router = new koaRouter()
-    let routes = require(rName)(Router, inject, middle)
+    let routes = require(rName)(Router, inject, middle,app)
     app.use(routes.routes())
   }
 
-  pubRouter('./ctrl',ctrls)
-  pubRouter('./api',apis)
+	pubRouter('./api',apis)
+	pubRouter('./ctrl',ctrls)
 
   // 404 Error handle
   app.use(function*(next) {

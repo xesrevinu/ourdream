@@ -1,31 +1,35 @@
 import _ from 'lodash'
 let {
-	TeamService,
-	NewsService
+	teamService,
+	newsService
 } = app.service
 
 let News = {}
+//News.get = function*() {
+//	let id = this.params.id
+//	//let watchs =
+//}
 News.get = function*() {
 	let show = this.query.show
 	let data
 	switch (show) {
 		case 'now':
-			data = yield NewsService.getNews()
+			data = yield newsService.getNews()
 			break
 		case 'star':
-			data = yield NewsService.bestWeek()
+			data = yield newsService.bestWeek()
 			break
 		default:
-			data = yield NewsService.getList()
+			data = yield newsService.getList()
 	}
 	this.body = data
 	return
 }
-News.show = function* () {
+News.show = async()=>{
 	let {id} = this.params.id
 	let data;
 	try {
-		data = yield NewsService.getNew(id)
+		data = await newsService.getNew(id)
 	} catch (e) {
 		logger.error(e)
 		this.body = {
@@ -50,16 +54,12 @@ News.show = function* () {
 	}
 	return
 }
-News.post = function*() {
-	//body = {
-	//  name:'',
-	//  leveal:'',
-	//  creator:'',
-	//  content:'',
-	//}
-	let body = this.request.body
-	let data = yield NewsService.create(body)
-	this.body = data
+News.post = async function(){
+	let data = this.request.body
+	console.log(data)
+	let a = await newsService.create(data)
+	console.log(a)
+	this.body = 'ok'
 }
 News.put = function*() {
 

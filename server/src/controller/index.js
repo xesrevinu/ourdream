@@ -4,7 +4,7 @@
 
 let index = {
 	get:function*(){
-		yield this.render('_index')
+		yield this.render('index')
 	}
 }
 

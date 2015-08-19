@@ -1,6 +1,8 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -16,16 +18,16 @@ exports['default'] = {
   listenPort: 3000,
   keys: ['koa secret secret'],
   mongo: {
-    host: 'mongodb://localhost/',
-    database: 'ourdream',
-    user: '',
-    pass: ''
+    host: "mongodb://localhost/",
+    database: "ourdream",
+    user: "",
+    pass: ""
   },
   redis: {
-    host: 'localhost',
+    host: "localhost",
     port: 6379,
-    db: '',
-    pass: ''
+    db: "",
+    pass: ""
   },
   session: {
     //defer: true,
@@ -39,25 +41,24 @@ exports['default'] = {
   },
   view: {
     ext: 'html',
-    root: root + '/public/',
+    root: root + "/public/dist/",
     cache: false
   },
   'static': {
-    path: root + '/public/',
+    path: root + "/public/",
     options: {
       maxAge: null
     }
   },
   compress: {
     // 默认压缩
-    level: 'Z_DEFAULT_COMPRESSION'
+    level: "Z_DEFAULT_COMPRESSION"
   },
-  serverPath: root + '/server/dist',
-  publicPath: root + '/public/',
+  serverPath: root + "/server/dist",
+  publicPath: root + "/public/",
   ctrlPath: root + '/server/dist/controller',
   apiPath: root + '/server/dist/api',
-  favicon: root + '/public/favicon.ico',
-  assets: require('../../../public/assets.json'),
+  favicon: root + "/public/favicon.ico",
   cliColor: {
     filters: {
       log: _cliColor2['default'].black.bgWhite,

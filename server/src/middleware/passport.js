@@ -1,9 +1,7 @@
-import co from 'co'
 import passport from 'koa-passport'
 import {
   Strategy as LocalStrategy
-}
-from 'passport-local'
+} from 'passport-local'
 import {
   User
 }

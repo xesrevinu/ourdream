@@ -1,6 +1,8 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -28,10 +30,6 @@ var _koaCompress = require('koa-compress');
 
 var _koaCompress2 = _interopRequireDefault(_koaCompress);
 
-var _koaPassport = require('koa-passport');
-
-var _koaPassport2 = _interopRequireDefault(_koaPassport);
-
 var _koaSwigRender = require('koa-swig-render');
 
 var _koaSwigRender2 = _interopRequireDefault(_koaSwigRender);
@@ -39,14 +37,6 @@ var _koaSwigRender2 = _interopRequireDefault(_koaSwigRender);
 var _koaBodyparser = require('koa-bodyparser');
 
 var _koaBodyparser2 = _interopRequireDefault(_koaBodyparser);
-
-var _koaSessionStore = require('koa-session-store');
-
-var _koaSessionStore2 = _interopRequireDefault(_koaSessionStore);
-
-var _koaTrieRouter = require('koa-trie-router');
-
-var _koaTrieRouter2 = _interopRequireDefault(_koaTrieRouter);
 
 var _koaStaticCache = require('koa-static-cache');
 
@@ -56,9 +46,9 @@ var _koaResponseTime = require('koa-response-time');
 
 var _koaResponseTime2 = _interopRequireDefault(_koaResponseTime);
 
-var _koaSessionMongoose = require('koa-session-mongoose');
+var _koaJwt = require('koa-jwt');
 
-var _koaSessionMongoose2 = _interopRequireDefault(_koaSessionMongoose);
+var _koaJwt2 = _interopRequireDefault(_koaJwt);
 
 var _webset = require('./webset');
 
@@ -73,36 +63,29 @@ var middleware = {
 exports['default'] = function (app) {
 	var config = app.config;
 	//get application Key
+	app.experimental = true;
 	app.keys = config.keys;
 	// trust proxy
 	app.proxy = true;
 	//加载中间件
-	app.use(_koaBodyparser2['default']());
-	app.use(_koaResponseTime2['default']());
-	app.use(_koaFavicon2['default'](config.favicon));
-	console.log(config.env);
+	app.use((0, _koaBodyparser2['default'])());
+	app.use((0, _koaResponseTime2['default'])());
+	app.use((0, _koaFavicon2['default'])(config.favicon));
 	if (config.env === 'development') {
-		app.use(_koaLogger2['default']());
+		app.use((0, _koaLogger2['default'])());
 	}
-	app.use(_koaCors2['default']());
-	/*app.use(session({
- 	store: mongooseStore.create(),
- 	cookie: config.session.cookie,
- 	resave: true,
- 	saveUninitialized: true
- }))*/
-	app.use(_koaStaticCache2['default'](config['static'].path, config['static'].options));
-	app.use(_koaCompress2['default']({
+	app.use((0, _koaCors2['default'])());
+	app.use((0, _koaStaticCache2['default'])(config['static'].path, config['static'].options));
+	app.use((0, _koaCompress2['default'])({
 		level: _zlib2['default'][config.compress.level]
 	}));
-	app.use(_koaValidate2['default']());
-	app.use(_webset2['default'](app));
-	app.use(_koaSwigRender2['default']({
+	app.use((0, _koaValidate2['default'])());
+	app.use((0, _webset2['default'])(app));
+	app.use((0, _koaSwigRender2['default'])({
 		root: config.view.root,
 		ext: config.view.ext,
 		cache: config.view.cache
 	}));
-	app.use(_koaTrieRouter2['default'](app));
 	return middleware;
 };
 

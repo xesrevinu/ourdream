@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.4",
-    "animate.css": "~3.2.6"
+    "animate.css": "~3.2.6",
+    "font-awesome": "~4.4.0"
   }
 }
