@@ -1,48 +1,47 @@
 /**
  * Created by xiaokekeT on 15/6/14.
  */
+//import React from 'react'
+//import Location from 'react-router/lib/Location'
+//import router from '../../../public/src/universal_router'
+//import { bindActionCreators, createStore, combineReducers, applyMiddleware, compose } from 'redux'
+//import * as reducers from '../../../public/src/reducers/index'
+//import thunk from 'redux-thunk'
 
 let index = {
-	get:function*(){
-		yield this.render('index')
+	async get(){
+		//let finalCreateStore = compose(
+		//	applyMiddleware(thunk),
+		//	createStore
+		//)
+		//const reducer = combineReducers(reducers)
+		//const store = finalCreateStore(reducer)
+		//let location = new Location(this.path,this.query)
+		//
+		//router(location,undefined,store)
+		//.then(({component})=>{
+		//		console.log(component)
+		//	class A extends React.Component{
+		//		render(){
+		//			return (
+		//				<html lang="en-us">
+		//					<head>
+		//						<meta charSet="utf-8"/>
+		//					</head>
+		//					<body>
+		//						<div dangerouslySetInnerHTML={{__html: React.renderToString(component)}}></div>
+		//					</body>
+		//				</html>
+		//			)
+		//		}
+		//	}
+		//	this.body = React.renderToString(<A/>)
+		//})
+		//.catch(e=>{
+		//		console.log(e)
+		//})
+		await this.render('index')
 	}
 }
-
-/*let login = {}
-login.get = function*() {
-	yield this.render('login')
-}
-login.post = function*() {
-	let status;
-	try {
-		status = yield UserService.login(this)
-	} catch (e) {
-		console.log(e)
-	}
-}*/
-
-/*let register = {}
-register.get = function*() {
-	yield this.render('register')
-}
-register.post = function*() {
-	let body = this.request.body
-	let newUser;
-	try {
-		newUser = yield UserService.createUser(body)
-	} catch (e) {
-		this.status = 401;
-		return this.body = {
-			success: false,
-			msg: e,
-			data: null
-		}
-	}
-	return this.body = {
-		success: true,
-		msg: '注册成功',
-		data: newUser
-	}
-}*/
 
 export default index

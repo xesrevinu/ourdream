@@ -8,9 +8,6 @@ var cssLoaders = [
 	'css',
 	'autoprefixer-loader?browsers=last 2 versions'
 ]
-var sassLoaders = cssLoaders.concat([
-	'sass?precision=10&outputStyle=expanded&sourceMap=true&includePaths[]=' + path.resolve(__dirname, './node_modules')
-])
 var relativeAssetsPath = '../dist';
 var assetsPath = path.join(__dirname, relativeAssetsPath);
 
@@ -18,7 +15,6 @@ module.exports = {
 	target: 'web',
 	context: path.resolve(__dirname, '..'),
 	entry: [
-		'bootstrap-sass!'+path.resolve(__dirname, './bootstrap-scss.config.js'),
 		'./src/index',
 	],
 	output: {
@@ -59,7 +55,7 @@ module.exports = {
     }),
 		new webpack.optimize.UglifyJsPlugin({
 			compress: {
-				warnings: true
+				warnings: false
 			}
 		}),
 		new htmlWebpackPlugin({
@@ -73,8 +69,7 @@ module.exports = {
 		loaders: [
 			{test: /\.js$/,loaders: ['babel'],exclude: /node_modules/},
 			{test: /\.css$/,loader:  cssLoaders.join('!')},
-			{test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports?jQuery=jquery' },
-			{test: /\.scss$/, loader: "style!css!sass?outputStyle=expanded" },
+			{test: /\.styl$/, loader:  extractTextPlugin.extract("style-loader",'css!autoprefixer?browsers=last 2 version!stylus-loader')},
 			{test: /\.(png|jpg)$/, loader: "url-loader?mimetype=image/png" },
 			{test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
 			{test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},

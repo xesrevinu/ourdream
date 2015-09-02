@@ -30,7 +30,7 @@ class Header extends Component{
 				<DropdownButton style={{padding: "5px 0 5px 0"}} eventKey={3} title={userInfo}>
 					<MenuItem eventKey='1'>Action</MenuItem>
 					<MenuItem divider />
-					<MenuItem eventKey='2' onClick={::this.logout}>退出</MenuItem>
+					<MenuItem eventKey='2' onClick={this.logout.bind(this)}>退出</MenuItem>
 				</DropdownButton>
 			</Nav>
 		)

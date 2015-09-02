@@ -1,0 +1,11 @@
+/**
+ * Created by xiaokekeT on 15/8/21.
+ */
+export const TEAMS_LOAD = 'TEAMS_LOAD'
+export const TEAMS_LOAD_SUCCESS = 'TEAMS_LOAD_SUCCESS'
+export const TEAMS_LOAD_FAIL = 'TEAMS_LOAD_FAIL'
+export const TEAMS_CHANGE_ACTIVE = 'TEAMS_CHANGE_ACTIVE'
+export const TEAMS_LOADALL = 'TEAMS_LOADALL'
+export const TEAMS_LOADALL_SUCCESS = 'TEAMS_LOADALL_SUCCESS'
+export const TEAMS_LOADALL_FAIL = 'TEAMS_LOADALL_FAIL'
+export const TEAMS_SERACH = 'TEAMS_SERACH'

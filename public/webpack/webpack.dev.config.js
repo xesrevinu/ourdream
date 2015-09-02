@@ -10,13 +10,13 @@ var scssLoad = [
 var relativeAssetsPath = '../dev';
 var assetsPath = path.join(__dirname, relativeAssetsPath);
 module.exports = {
-	devtool: 'cheap-module-eval-source-map',
+	devtool: 'inline-source-map',
 	target: 'web',
 	context: path.resolve(__dirname, '..'),
 	entry: [
 		'webpack-dev-server/client?http://localhost:4000',
 		'webpack/hot/only-dev-server',
-		'bootstrap-sass!'+path.resolve(__dirname, './bootstrap-scss.config.js'),
+		//'bootstrap-sass!'+path.resolve(__dirname, './bootstrap-scss.config.js'),
 		'./src/index'
 	],
 	output: {
@@ -56,15 +56,11 @@ module.exports = {
 			exclude: /node_modules/
 		}, {
 			test: /\.css$/,
-			loader: 'style!css?modules!autoprefixer?browsers=last 2 version'
+			loader: 'style!css!autoprefixer?browsers=last 2 version'
 		}, {
 			test: /\.styl$/,
-			loader: 'style!css?modules!autoprefixer?browsers=last 2 version!stylus-loader'
-		},{
-			test: /\.scss$/,
-			loader: scssLoad.join("!")
+			loader: 'style!css!autoprefixer?browsers=last 2 version!stylus-loader'
 		},
-			{test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports?jQuery=jquery' },
 			{ test: /\.(png|jpg)$/, loader: "url-loader?mimetype=image/png" },
 			{test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
 			{test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},

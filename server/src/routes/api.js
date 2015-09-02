@@ -31,6 +31,8 @@ export default (router, api, middle, app) => {
 	router.put('/api/news/:id', api.news.index.put)
 	router.delete('/api/news/:id', api.news.index.delete)
 
+	router.get('/api/user/:id/teams',api.user.index.getTeams)
+
 	/**
 	 * Message
 	 **/

@@ -1,0 +1,516 @@
+@import '../../bower_components/bootstrap/dist/css/bootstrap.css'
+@import '../../bower_components/font-awesome/css/font-awesome.css'
+
+body 
+  background #efeeee
+  overflow-x hidden
+  overflow-y scroll
+
+.application
+  margin-bottom 30px
+
+.btn:focus, .btn:active:focus
+  outline 0
+
+.logo 
+  color #00aa90 !important
+
+.example-enter
+  opacity 0.01
+  transition:all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+
+.example-enter.example-enter-active
+  opacity: 1;
+
+.app-loading 
+  text-align center
+  position absolute
+  top 50%
+  left 50%
+  margin-left -40px
+  margin-top -75pt
+
+
+.app-loading > p 
+  font-size 9pt
+
+
+.sk-cube-grid 
+  width 40px
+  height 40px
+
+
+.sk-cube-grid .sk-cube 
+  width 33%
+  height 33%
+  background-color #333
+  float left
+  -webkit-animation sk-cubeGridScaleDelay 1.3s infinite ease-in-out
+  animation sk-cubeGridScaleDelay 1.3s infinite ease-in-out
+
+
+.sk-cube-grid .sk-cube1 
+  -webkit-animation-delay .2s
+  animation-delay .2s
+
+
+.sk-cube-grid .sk-cube2 
+  -webkit-animation-delay .3s
+  animation-delay .3s
+
+
+.sk-cube-grid .sk-cube3 
+  -webkit-animation-delay .4s
+  animation-delay .4s
+
+
+.sk-cube-grid .sk-cube4 
+  -webkit-animation-delay .1s
+  animation-delay .1s
+
+
+.sk-cube-grid .sk-cube5 
+  -webkit-animation-delay .2s
+  animation-delay .2s
+
+
+.sk-cube-grid .sk-cube6 
+  -webkit-animation-delay .3s
+  animation-delay .3s
+
+
+.sk-cube-grid .sk-cube7 
+  -webkit-animation-delay 0s
+  animation-delay 0s
+
+
+.sk-cube-grid .sk-cube8 
+  -webkit-animation-delay .1s
+  animation-delay .1s
+
+
+.sk-cube-grid .sk-cube9 
+  -webkit-animation-delay .2s
+  animation-delay .2s
+  
+.back-home 
+  color #fff
+  position absolute
+  top 24px
+  font-size 18px
+  left 30px
+
+
+.back-home > a 
+  color #fff
+
+
+.page 
+  text-align center
+
+
+.masthead 
+  padding 12% 0 11%
+  //background-image:url("https//tower.im/assets/home/bg-5860212fd2db73b9d38cc7b766b93640.jpg")
+  background-repeat no-repeat
+  background-size auto 600px
+  background-repeat repeat-x
+  background-position 0 0
+  border-bottom 1px solid hsla(0, 0%, 89%, .34)
+  box-shadow #b7b7b7 0 2px 8px
+
+
+.announcements 
+  border-bottom 1px solid #ccc
+  padding 5pc
+  height 250px
+
+
+.announcement a 
+  color #000
+
+
+.show-down 
+  position relative
+  left -50px
+  top 140px
+
+
+.feature 
+  padding 6% 0 8%
+  border-bottom 1px solid #ccc
+
+
+.introduction 
+  text-align left
+  padding-left 10%
+  margin-top 40px
+
+
+.introduction-list 
+  float left
+  min-width 380px
+  margin-top 90px
+  margin-left 10%
+
+
+.introduction-list .list-group-item 
+  border none
+
+
+.introduction-img, .introduction-iphone 
+  width 20pc
+  height 568px
+  float left
+  box-shadow #888787 0 2px 5px
+
+
+.introduction-img 
+  width 25pc
+
+
+.index-footer 
+  background-color #333
+  height 150px
+  padding-top 60px
+  color #fff
+
+
+.btn-ghost 
+  box-shadow none
+  background #23b3ff
+  color #fff
+  border 1px solid #fff
+
+
+
+.topbanner 
+  height 220px
+  background-size cover
+  position relative
+
+
+.poswrap, .topbanner 
+  text-align center
+  width 100%
+
+
+.poswrap 
+  bottom 30px
+
+
+.auth, .poswrap 
+  position absolute
+
+
+.auth 
+  top 0
+  bottom 0
+  width 100%
+
+
+.left 
+  height 100%
+  background #f25d59
+  position relative
+
+
+.right 
+  height 100%
+  background #292c3d
+
+
+.auth-title 
+  color #fff
+  padding 75pt 30px 0
+
+
+.auth-title > h3 
+  text-align right
+
+
+.auth-doubt 
+  height 75pt
+  width 100%
+  position absolute
+  bottom 0
+  color #fff
+  text-align center
+  padding 38px 0 0
+  font-size 9pt
+  background #e84e4a
+
+
+.auth-doubt > ul 
+  list-style none
+  padding 0
+  position relative
+  left -30px
+
+
+.auth-doubt > ul > li > a 
+  display inline-block
+  float right
+  margin 3px
+  color #ded4d4
+
+
+.form-unit 
+  color #fff
+
+
+.form-unit .form-control 
+  border none
+  height 45px
+
+
+.form-unit .input-group-addon 
+  background none
+  border none
+  border-radius 0
+  color #db4860
+
+
+.form-unit .input-group 
+  border-bottom 1px solid #ccc
+  margin-top 15px
+
+
+.form-unit .form-prompt 
+  margin-top 22px
+
+
+.form-unit .form-prompt a 
+  color #919191
+
+
+.auth-container 
+  position relative
+  top 20%
+  height 300px
+  width 500px
+  left 30%
+
+
+.form-submit 
+  margin-top 10px
+  float right
+
+
+.loading 
+  display inline-block
+  padding 3px
+
+
+.loading > div 
+  background-color #1db572 !important
+
+
+.loading-fail > div 
+  background-color #ff5d62 !important
+
+
+.message-container 
+  padding 10px
+  margin-left 25px
+
+
+.user-container 
+  margin-left 20px
+
+
+.message-loading 
+  position relative
+  left 50%
+  transform scale(1.4)
+  margin-bottom 40px
+  margin-top 30px
+
+
+.message-loading > div 
+  background-color #1db572 !important
+
+
+.message-loadingbefore 
+  content '\6B63\5728\52A0\8F7D'
+  position absolute
+  top 28px
+  font-size 9pt !important
+  left -9px
+
+
+.message-item 
+  padding-top 3px
+  color #444
+  background #fff
+  border-radius 3px
+
+
+.footer 
+  text-align center
+  height 50px
+  width 100%
+  line-height 50px
+
+
+.footer, .left-menu 
+  position absolute
+  bottom 0
+
+
+.left-menu 
+  width 70px
+  height 100%
+  background #181f24
+  transition all .3s cubic-bezier(0.18, 0.89, 0.32, 1.28)
+  position fixed
+
+.left-menu.none 
+  left -70px
+  display none
+
+
+.left-menu.show 
+  left 0
+  display block
+
+
+.list-group.no-radius .list-group-item 
+  border-radius 0 !important
+
+
+.list-group.no-borders .list-group-item 
+  border none
+
+
+.list-group.no-bg .list-group-item 
+  background-color transparent
+
+
+.showMenu 
+  transition margin .3s cubic-bezier(0.18, 0.89, 0.32, 1.28)
+
+
+.showMenu.none 
+  margin-left 0
+
+
+.showMenu.show 
+  margin-left 70px
+
+
+.menu-logo 
+  width 70px
+  height 50px
+  color #fff
+  text-align center
+  padding 9pt 0 10px
+
+
+.menu-list 
+  padding 0
+  margin 0
+  list-style none
+
+
+.menu-list > li > a 
+  display block
+  width 70px
+  height 50px
+  color #fff
+  text-align center
+  padding-top 20px
+
+
+.menu-list > li > ahover 
+  color #aaa !important
+
+
+.menu-list > li > a.active 
+  background #26323a
+
+
+.menu-list > li > a.comment 
+  color #36b76e
+
+
+.menu-list > li > a.users 
+  color #4779ff
+
+
+.menu-list > li > a.inbox 
+  color #ca5b8a
+
+.box
+   margin-bottom 10px
+   padding 20px
+   background-color #fff
+
+.team-default .box h2
+   margin: 0 0 15px;
+   padding-bottom: 10px;
+   line-height: 30px;
+   border-bottom: 1px solid #e6e6e6;
+   font-size: 18px;
+   font-weight: 400;
+
+.team-header
+  margin-bottom 10px
+  background-color #fff
+  height 270px
+  background-image url("http://jobtong-image.b0.upaiyun.com/e-header-bg.png")
+  background-size 100% 100%
+  background-repeat no-repeat
+  background-position top center
+  text-align center
+  padding 40px 0 0 0
+  color #fff
+  & img
+    width 98px;
+    height 98px;
+    display inline-block
+    margin-bottom 10px
+    border 4px solid #e6edfd;
+
+ .team-card
+   width 23%
+   height 300px
+   margin 10px
+   float left
+   background #fff
+   & .content
+     text-align center
+     margin-top 10px
+     padding 10px
+
+.team-card-footer
+  width 100%
+  padding 0
+  height 30px
+  background #bcc8c5
+  position relative
+  bottom 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

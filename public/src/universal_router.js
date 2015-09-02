@@ -1,5 +1,5 @@
 import React from 'react'
-import Router,{Route} from 'react-router'
+import Router,{ Route } from 'react-router'
 import createRoutes from './routes'
 import { Provider } from 'react-redux'
 

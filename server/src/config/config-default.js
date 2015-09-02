@@ -43,10 +43,10 @@ export default {
     // 默认压缩
     level: "Z_DEFAULT_COMPRESSION"
   },
-  serverPath: root + "/server/dist",
+  serverPath: root + "/server/src",
   publicPath: root + "/public/",
-	ctrlPath: root + '/server/dist/controller',
-	apiPath:root + '/server/dist/api',
+	ctrlPath: root + '/server/src/controller',
+	apiPath:root + '/server/src/api',
   favicon: root + "/public/favicon.ico",
   cliColor: {
     filters: {

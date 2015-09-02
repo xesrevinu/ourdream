@@ -34,9 +34,10 @@ export default {
 		}
 		return  auth
 	},
-	getWatchList:async function(userId){
-		let watchList = await userModel.find({_id:userId},{
-			watchs:1
+	async getWatchList(userId){
+		let watchList = await userModel.findOne({_id:userId},{
+			watchs:1,
+			_id:0
 		}).exec()
 		return watchList
 	}

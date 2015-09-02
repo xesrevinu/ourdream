@@ -4,7 +4,7 @@ export default (router, ctrl, middle) => {
 	 *
 	 * */
 	//首页
-	router.get('/', ctrl.index.get)
+	router.get('/*', ctrl.index.get)
 
 	return router
 }

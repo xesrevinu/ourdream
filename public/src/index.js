@@ -1,4 +1,3 @@
-require('../bower_components/animate.css/animate.css')
 import React from 'react'
 import thunk from 'redux-thunk'
 import Location from 'react-router/lib/Location'
@@ -10,17 +9,18 @@ import * as authActions from './actions/authActions'
 import universalRouter from './universal_router'
 import moment from 'moment'
 import momentLocal from 'moment/locale/zh-cn'
-
+require('./styles/main.styl')
 //全局变量
 window.moment = global.moment = moment
-let Root = window.Root = document.getElementById('root')
-let history = new HashHistory()
-let location = new Location(document.location.pathname, document.location.search)
+const Root = window.Root = document.getElementById('root')
+const history = new HashHistory()
+const location = new Location(document.location.pathname, document.location.search)
 
+let DEVTOOLS = false
 let finalCreateStore
 
-if (__DEVTOOLS__) {
-  let { devTools, persistState } = require('redux-devtools')
+if (DEVTOOLS) {
+	const { devTools, persistState } = require('redux-devtools')
   finalCreateStore = compose(
     applyMiddleware(thunk),
 		persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
@@ -34,11 +34,11 @@ if (__DEVTOOLS__) {
   )
 }
 
-let reducer = combineReducers(reducers)
-let store = finalCreateStore(reducer)
+const reducer = combineReducers(reducers)
+const store = finalCreateStore(reducer)
 
-let { dispatch } = store
-let userActions = bindActionCreators(authActions, dispatch)
+const { dispatch } = store
+const userActions = bindActionCreators(authActions, dispatch)
 
 /*
 	<DebugPanel>
@@ -49,7 +49,7 @@ let userActions = bindActionCreators(authActions, dispatch)
 
 userActions.init(()=>{
 	let devtools = null;
-	if (__DEVTOOLS__) {
+	if (DEVTOOLS) {
 		const { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
 		devtools = (
 			<DebugPanel top right bottom>
@@ -62,6 +62,7 @@ userActions.init(()=>{
 		let components = (
 			<div>
 				{component}
+				{devtools}
 			</div>
 		)
 		React.render(components, Root)

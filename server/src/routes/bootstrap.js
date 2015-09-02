@@ -18,7 +18,6 @@ export default (app) => {
     let routes = require(rName)(Router, inject, middle,app)
     app.use(routes.routes())
   }
-
 	pubRouter('./api',apis)
 	pubRouter('./ctrl',ctrls)
 

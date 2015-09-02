@@ -45,6 +45,7 @@ class Message extends Component {
 		)
 	}
 }
+
 class MessageList extends Component {
 	static propTypes = {
 		message:Types.object.isRequired
@@ -94,4 +95,5 @@ class MessageContainer extends Component {
 		)
 	}
 }
+export { Message }
 export default MessageContainer

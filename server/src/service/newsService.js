@@ -58,7 +58,12 @@ export default NewsService
 export async function getAA(){
 
 }
-
+export async function getMessages(teamId){
+	let list = await newsModel.find({
+	}).exec()
+	console.log(list)
+	return list
+}
 export async function watchs(userId){
 	//获取关注列表
 	let { watchs } = await userModel.findOne({_id:userId}).exec()

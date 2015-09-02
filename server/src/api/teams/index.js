@@ -2,7 +2,8 @@
  * Created by xiaokekeT on 15/6/27.
  */
 const {
-  teamService
+  teamService,
+  newsService
 } = app.service
 
 let teams = {}
@@ -40,10 +41,12 @@ teams.show = function*() {
       }
       return
     }
+    let bb = data
+    let messages = yield newsService.getMessages(id)
     this.body = {
       error: '',
       msg: '获取团队信息成功',
-      data: data
+      data: bb
     }
     return
   }

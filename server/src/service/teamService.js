@@ -42,9 +42,8 @@ export default {
       count: count
     }
   },
-  getTeam: function*(teamId) {
-    let data = yield teamModel.findById(teamId).exec()
-    return data
+  async getTeam (teamId) {
+    return await teamModel.findById(teamId).exec()
   },
   createTeam: function*(body) {
     body.creator = "554c263adf78ff141dd84693"
